@@ -4,6 +4,9 @@ import { withContentCollections } from "@content-collections/next";
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
+  images: {
+    unoptimized: true,
+  },
 };
 
 // withContentCollections must be the outermost plugin
