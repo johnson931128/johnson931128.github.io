@@ -1,4 +1,5 @@
 import { DATA } from "@/data/resume";
+import BrandMark from "@/components/portfolio/brand-mark";
 
 const navigation = [
   { href: "#about", label: "About" },
@@ -27,9 +28,14 @@ export default function PortfolioSidebar() {
         <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
           {DATA.description}
         </p>
-        <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-          {DATA.educationLine}
-        </p>
+        <div className="mt-4 flex max-w-sm items-center gap-2.5 text-sm leading-relaxed text-muted-foreground">
+          <BrandMark
+            src="/brands/ncku.jpg"
+            alt="National Cheng Kung University logo"
+            size="compact"
+          />
+          <p>{DATA.educationLine}</p>
+        </div>
       </div>
 
       <nav aria-label="Section navigation" className="mt-10 hidden lg:block">

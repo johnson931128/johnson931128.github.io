@@ -68,7 +68,7 @@ export const DATA = {
       badges: [],
       location: "Tainan, Taiwan",
       title: "Software Engineering Intern",
-      logoUrl: "",
+      logoUrl: "/brands/delta-electronics.png",
       start: "",
       end: undefined,
       description:
