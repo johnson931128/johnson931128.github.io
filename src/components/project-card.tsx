@@ -27,9 +27,10 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
 
 interface Props {
   title: string;
+  subtitle?: string;
   href?: string;
-  description: string;
-  dates: string;
+  description?: string;
+  dates?: string;
   tags: readonly string[];
   link?: string;
   image?: string;
@@ -44,6 +45,7 @@ interface Props {
 
 export function ProjectCard({
   title,
+  subtitle,
   href,
   description,
   dates,
@@ -109,7 +111,11 @@ export function ProjectCard({
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>
-            <time className="text-xs text-muted-foreground">{dates}</time>
+            {subtitle ? (
+              <p className="text-sm text-muted-foreground">{subtitle}</p>
+            ) : dates ? (
+              <time className="text-xs text-muted-foreground">{dates}</time>
+            ) : null}
           </div>
           <Link
             href={href || "#"}
@@ -121,9 +127,11 @@ export function ProjectCard({
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-          <Markdown>{description}</Markdown>
-        </div>
+        {description ? (
+          <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+            <Markdown>{description}</Markdown>
+          </div>
+        ) : null}
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-auto">
             {tags.map((tag) => (

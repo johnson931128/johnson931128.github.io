@@ -14,20 +14,21 @@ const socialLinks = [
 ];
 
 export default function PortfolioSidebar() {
-  const currentProject = DATA.projects.find((project) => project.active);
-  const currentRole = DATA.work[0]?.title ?? "Engineer";
-
   return (
     <aside className="flex flex-col border-b border-border pb-10 lg:sticky lg:top-12 lg:h-[calc(100vh-6rem)] lg:border-b-0 lg:pb-0">
       <div>
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">
-          {currentRole}
+          {DATA.role}
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           {DATA.name}
         </h1>
+        <p className="mt-2 text-base text-muted-foreground">{DATA.nameZh}</p>
         <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
           {DATA.description}
+        </p>
+        <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+          {DATA.educationLine}
         </p>
       </div>
 
@@ -72,7 +73,7 @@ export default function PortfolioSidebar() {
       <div className="mt-8 border-l-2 border-primary pl-4 text-sm">
         <p className="font-medium text-foreground">Current focus</p>
         <p className="mt-1 leading-relaxed text-muted-foreground">
-          {currentProject?.title ?? "Selected work"}
+          {DATA.currentStatus}
         </p>
         <p className="mt-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
           {DATA.location}
