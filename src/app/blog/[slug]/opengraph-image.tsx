@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 import { allPosts } from "content-collections";
 import { DATA } from "@/data/resume";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 export const alt = "Blog Post";
 export const size = {
@@ -12,6 +12,12 @@ export const size = {
     height: 630,
 };
 export const contentType = "image/png";
+
+export function generateStaticParams() {
+    return allPosts.map((post) => ({
+        slug: post._meta.path.replace(/\.mdx$/, ""),
+    }));
+}
 
 const getFontData = async () => {
     try {
