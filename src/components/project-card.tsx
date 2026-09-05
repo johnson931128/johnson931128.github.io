@@ -39,6 +39,7 @@ interface Props {
     icon: React.ReactNode;
     type: string;
     href: string;
+    download?: boolean;
   }[];
   className?: string;
 }
@@ -93,6 +94,7 @@ export function ProjectCard({
                 key={idx}
                 target="_blank"
                 rel="noopener noreferrer"
+                download={link.download}
                 onClick={(e) => e.stopPropagation()}
               >
                 <Badge

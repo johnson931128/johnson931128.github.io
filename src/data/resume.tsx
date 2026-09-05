@@ -1,4 +1,5 @@
 import { Icons } from "@/components/icons";
+import { Download, FileText } from "lucide-react";
 
 type NavigationItem = {
   href: string;
@@ -25,6 +26,19 @@ const demoLink = (href: string) => ({
   type: "Demo",
   href,
   icon: <Icons.youtube className="size-3" aria-hidden />,
+});
+
+const slidesLink = (href: string) => ({
+  type: "Slides",
+  href,
+  icon: <FileText className="size-3" aria-hidden />,
+});
+
+const downloadPptxLink = (href: string) => ({
+  type: "Download PPTX",
+  href,
+  download: true,
+  icon: <Download className="size-3" aria-hidden />,
 });
 
 export const DATA = {
@@ -132,6 +146,7 @@ export const DATA = {
       links: [
         githubLink("https://github.com/johnson931128/amr_software_ws"),
         demoLink("https://www.youtube.com/watch?v=47RL0V7g4iQ"),
+        slidesLink("/slides/amr-software-stack.pdf"),
       ],
       image: "/projects/amr-software-stack.jpg",
       video: "",
@@ -148,6 +163,39 @@ export const DATA = {
       links: [githubLink("https://github.com/johnson931128/WUWAOS")],
       image: "",
       video: "",
+    },
+    {
+      title: "Verilog FPGA Game",
+      subtitle: "Basys 3 VGA Game System",
+      href: "https://github.com/johnson931128/practice/tree/main/verilog",
+      dates: "",
+      active: false,
+      private: false,
+      description:
+        "A two-player VGA game for the Basys 3 FPGA, combining keypad input with pixel-generated paddle and ball gameplay, collision detection, score-area signals, dot-matrix output, and seven-segment timing.",
+      technologies: ["Verilog", "FPGA", "Basys 3", "VGA"],
+      links: [
+        githubLink("https://github.com/johnson931128/practice/tree/main/verilog"),
+        downloadPptxLink("/slides/verilog-fpga-game.pptx"),
+      ],
+      image: "",
+      video: "",
+    },
+    {
+      title: "Java Maze Game",
+      subtitle: "Procedural Maze Game",
+      href: "https://github.com/johnson931128/JAVA/tree/main/MazeGame_final_ver",
+      dates: "",
+      active: false,
+      private: false,
+      description:
+        "A Swing maze game that generates new mazes with depth-first search, increases maze size across levels, tracks elapsed and best times, and supports saving and continuing progress.",
+      technologies: ["Java", "Swing"],
+      links: [
+        githubLink("https://github.com/johnson931128/JAVA/tree/main/MazeGame_final_ver"),
+      ],
+      image: "",
+      video: "/projects/java-maze-demo.mp4",
     },
     {
       title: "Other Projects",
