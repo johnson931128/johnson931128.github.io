@@ -21,6 +21,12 @@ const githubLink = (href: string) => ({
   icon: <Icons.github className="size-3" aria-hidden />,
 });
 
+const demoLink = (href: string) => ({
+  type: "Demo",
+  href,
+  icon: <Icons.youtube className="size-3" aria-hidden />,
+});
+
 export const DATA = {
   name: "Johnson Fan",
   nameZh: "范舜傑",
@@ -111,17 +117,23 @@ export const DATA = {
       dates: "",
       active: false,
       private: false,
-      description: "",
+      description:
+        "A ROS 2 Jazzy AMR software stack spanning simulation and real-robot deployment, integrating LiDAR, Raspberry Pi 5, ESP32/micro-ROS, SLAM, AMCL, Nav2, and mission-level task control.",
       technologies: [
         "ROS 2 Jazzy",
         "Nav2",
         "SLAM",
+        "AMCL",
+        "RPLIDAR A1M8",
         "Raspberry Pi 5",
         "ESP32",
         "micro-ROS",
       ],
-      links: [githubLink("https://github.com/johnson931128/amr_software_ws")],
-      image: "",
+      links: [
+        githubLink("https://github.com/johnson931128/amr_software_ws"),
+        demoLink("https://www.youtube.com/watch?v=47RL0V7g4iQ"),
+      ],
+      image: "/projects/amr-software-stack.jpg",
       video: "",
     },
     {

@@ -17,6 +17,8 @@ const socialLinks = [
 export default function PortfolioSidebar() {
   return (
     <aside className="flex flex-col border-b border-border pb-10 lg:sticky lg:top-12 lg:h-[calc(100vh-6rem)] lg:border-b-0 lg:pb-0">
+      <div aria-hidden="true" className="h-32 shrink-0 sm:h-36 lg:h-[11.5rem]" />
+
       <div>
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">
           {DATA.role}
