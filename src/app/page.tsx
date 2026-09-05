@@ -1,4 +1,4 @@
-import EngineeringNotesSection from "@/components/portfolio/engineering-notes-section";
+import LearningNotesSection from "@/components/portfolio/learning-notes-section";
 import PortfolioSidebar from "@/components/portfolio/portfolio-sidebar";
 import SelectedWorkSection from "@/components/portfolio/selected-work-section";
 import WorkSection from "@/components/section/work-section";
@@ -49,12 +49,12 @@ export default function Page() {
             </div>
           </section>
 
-          <section id="engineering-notes" aria-labelledby="engineering-notes-heading" className="scroll-mt-8">
-            <h2 id="engineering-notes-heading" className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-              Engineering Notes
+          <section id="learning-notes" aria-labelledby="learning-notes-heading" className="scroll-mt-8">
+            <h2 id="learning-notes-heading" className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+              Learning Notes
             </h2>
             <div className="mt-6">
-              <EngineeringNotesSection />
+              <LearningNotesSection />
             </div>
           </section>
         </div>

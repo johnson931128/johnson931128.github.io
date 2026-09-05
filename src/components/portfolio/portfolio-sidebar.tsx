@@ -5,7 +5,7 @@ const navigation = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#selected-work", label: "Selected Work" },
-  { href: "#engineering-notes", label: "Engineering Notes" },
+  { href: "#learning-notes", label: "Learning Notes" },
 ];
 
 const socialLinks = [
