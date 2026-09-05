@@ -75,8 +75,8 @@ export const DATA = {
       location: "Tainan, Taiwan",
       title: "Software Engineering Intern",
       logoUrl: "/brands/delta-electronics.png",
-      start: "",
-      end: undefined,
+      start: "2026",
+      end: "2027",
       description:
         "Working on software tooling related to industrial communication, including EtherCAT analysis and agent-assisted engineering workflows.",
     },
