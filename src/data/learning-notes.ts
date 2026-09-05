@@ -131,14 +131,14 @@ export const LEARNING_NOTE_SUBJECTS: readonly LearningNoteSubject[] = [
         group: "ORB-slam3",
         hackmdUrl: `${HACKMD_BASE_URL}HylOV8qnxWe`,
       },
-      { slug: "ryTv6Kjxbl", title: "目前進度", group: null, hackmdUrl: `${HACKMD_BASE_URL}ryTv6Kjxbl` },
+      { slug: "Hyiw7yik-e", title: "大方向", group: null, hackmdUrl: `${HACKMD_BASE_URL}Hyiw7yik-e` },
       {
         slug: "HkBGLQ8eWl",
         title: "大方向二 (待修)",
         group: null,
         hackmdUrl: `${HACKMD_BASE_URL}HkBGLQ8eWl`,
       },
-      { slug: "Hyiw7yik-e", title: "大方向", group: null, hackmdUrl: `${HACKMD_BASE_URL}Hyiw7yik-e` },
+      { slug: "ryTv6Kjxbl", title: "目前進度", group: null, hackmdUrl: `${HACKMD_BASE_URL}ryTv6Kjxbl` },
       { slug: "SyJlV4fCeg", title: "複習用(專題)", group: null, hackmdUrl: `${HACKMD_BASE_URL}SyJlV4fCeg` },
       { slug: "SJftEBApgg", title: "Intermediate", group: null, hackmdUrl: `${HACKMD_BASE_URL}SJftEBApgg` },
       {
@@ -223,8 +223,8 @@ export const LEARNING_NOTE_SUBJECTS: readonly LearningNoteSubject[] = [
       { slug: "B1cCB8uRZx", title: "專題紀錄2", group: null, hackmdUrl: `${HACKMD_BASE_URL}B1cCB8uRZx` },
       { slug: "rk8TX00eGe", title: "專題紀錄3", group: null, hackmdUrl: `${HACKMD_BASE_URL}rk8TX00eGe` },
       { slug: "S1wXQkudZx", title: "軟體模擬開發", group: null, hackmdUrl: `${HACKMD_BASE_URL}S1wXQkudZx` },
-      { slug: "Hyuv_TtIZe", title: "七日計畫", group: null, hackmdUrl: `${HACKMD_BASE_URL}Hyuv_TtIZe` },
       { slug: "H1PDpuJrbe", title: "手持LIDAR進行SLAM", group: null, hackmdUrl: `${HACKMD_BASE_URL}H1PDpuJrbe` },
+      { slug: "Hyuv_TtIZe", title: "七日計畫", group: null, hackmdUrl: `${HACKMD_BASE_URL}Hyuv_TtIZe` },
     ],
   },
 ];

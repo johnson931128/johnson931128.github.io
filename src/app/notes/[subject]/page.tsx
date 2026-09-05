@@ -46,7 +46,7 @@ export default async function LearningNoteSubjectPage({
 
   const notes = sortLearningNotes(subject.notes);
   const hasGroups = notes.some((note) => note.group);
-  const groupOrder = ["tf2", "intermediate", "action", "Client Library", "ORB-slam3", null];
+  const groupOrder = [null, "tf2", "intermediate", "action", "Client Library", "ORB-slam3"];
   const noteGroups = hasGroups
     ? groupOrder
         .map((group) => ({
