@@ -97,11 +97,12 @@ export const DATA = {
       dates: "",
       active: false,
       private: false,
-      description: "",
+      description:
+        "A lightweight 2D AMR simulator and environment editor built from scratch for validating robot motion, collision behavior, and navigation concepts before hardware deployment.",
       technologies: ["C++", "SFML"],
       links: [githubLink("https://github.com/johnson931128/CtrlKine-AMR")],
       image: "",
-      video: "",
+      video: "/projects/ctrlkine-amr.mp4",
     },
     {
       title: "AMR Software Stack",

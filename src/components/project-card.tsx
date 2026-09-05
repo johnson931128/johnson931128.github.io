@@ -77,7 +77,7 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              className="w-full h-48 object-cover"
+              className="aspect-video w-full object-cover"
             />
           ) : image ? (
             <ProjectImage src={image} alt={title} />
