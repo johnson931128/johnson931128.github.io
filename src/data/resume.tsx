@@ -51,6 +51,8 @@ export const DATA = {
   location: "Tainan, Taiwan",
   description:
     "Engineering Science student focused on software systems, embedded development, robotics, and industrial communication.",
+  heroIntro:
+    "I build careful, maintainable software that connects system design with real-world constraints.",
   summary:
     "Engineering Science student at National Cheng Kung University, focused on software systems, embedded development, robotics, and industrial communication. Current work spans EtherCAT-related tooling and agent workflows, AMR simulation and navigation, and systems programming projects. Interested in building maintainable software that connects high-level system design with real hardware constraints.",
   currentStatus:
@@ -158,8 +160,9 @@ export const DATA = {
       dates: "",
       active: false,
       private: false,
-      description: "",
-      technologies: ["Systems Programming"],
+      description:
+        "A terminal-first C++17 operating-system simulator with a minimal shell, process model, kernel skeleton, system-call layer, and an FCFS scheduler baseline.",
+      technologies: ["C++17", "CMake", "Systems Programming", "FCFS"],
       links: [githubLink("https://github.com/johnson931128/WUWAOS")],
       image: "",
       video: "",
