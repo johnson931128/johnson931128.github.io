@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
+import ViewportVideo from "@/components/portfolio/viewport-video";
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -60,7 +61,7 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "group flex h-full flex-col overflow-hidden rounded-xl border border-border transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-sm focus-within:border-primary/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0",
         className
       )}
     >
@@ -72,13 +73,9 @@ export function ProjectCard({
           className="block"
         >
           {video ? (
-            <video
+            <ViewportVideo
               src={video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="aspect-video w-full object-cover"
+              className="aspect-video transition-transform duration-500 group-hover:scale-[1.01] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
             />
           ) : image ? (
             <ProjectImage src={image} alt={title} />
@@ -98,7 +95,7 @@ export function ProjectCard({
                 onClick={(e) => e.stopPropagation()}
               >
                 <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
+                  className="flex items-center gap-1.5 border border-transparent bg-foreground text-xs text-background transition-transform hover:-translate-y-px hover:bg-foreground/90 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   variant="default"
                 >
                   {link.icon}
@@ -123,7 +120,7 @@ export function ProjectCard({
             href={href || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+            className="rounded-sm text-muted-foreground transition-[color,transform] hover:-translate-y-px hover:translate-x-px hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0"
             aria-label={`Open ${title}`}
           >
             <ArrowUpRight className="h-4 w-4" aria-hidden />

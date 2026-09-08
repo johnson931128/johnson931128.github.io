@@ -2,12 +2,14 @@ import LearningNotesSection from "@/components/portfolio/learning-notes-section"
 import PortfolioSidebar from "@/components/portfolio/portfolio-sidebar";
 import SelectedWorkSection from "@/components/portfolio/selected-work-section";
 import WorkSection from "@/components/section/work-section";
+import EngineeringSignalRail from "@/components/portfolio/engineering-signal-rail";
+import { PortfolioInteractionProvider } from "@/components/portfolio/portfolio-interaction-context";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 
 export default function Page() {
   return (
-    <>
+    <PortfolioInteractionProvider>
       <a
         href="#main-content"
         className="sr-only z-50 rounded-md bg-background px-4 py-2 text-sm font-medium text-foreground shadow-sm ring-2 ring-ring focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -21,7 +23,8 @@ export default function Page() {
       >
         <PortfolioSidebar />
 
-        <div className="min-w-0 space-y-24 pb-8 sm:space-y-28">
+        <div id="portfolio-content" className="relative min-w-0 space-y-24 pb-8 sm:space-y-28">
+          <EngineeringSignalRail />
           <section id="about" aria-labelledby="about-heading" className="scroll-mt-8">
             <h2 id="about-heading" className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
               About
@@ -42,7 +45,7 @@ export default function Page() {
 
           <section id="selected-work" aria-labelledby="selected-work-heading" className="scroll-mt-8">
             <h2 id="selected-work-heading" className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-              Selected Work
+              Featured Work
             </h2>
             <div className="mt-6">
               <SelectedWorkSection />
@@ -59,6 +62,6 @@ export default function Page() {
           </section>
         </div>
       </main>
-    </>
+    </PortfolioInteractionProvider>
   );
 }

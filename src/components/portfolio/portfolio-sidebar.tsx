@@ -1,12 +1,10 @@
+"use client";
+
 import { DATA } from "@/data/resume";
 import BrandMark from "@/components/portfolio/brand-mark";
-
-const navigation = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#selected-work", label: "Selected Work" },
-  { href: "#learning-notes", label: "Learning Notes" },
-];
+import { usePortfolioInteraction } from "@/components/portfolio/portfolio-interaction-context";
+import { PORTFOLIO_SECTIONS } from "@/components/portfolio/portfolio-sections";
+import { cn } from "@/lib/utils";
 
 const socialLinks = [
   DATA.contact.social.GitHub,
@@ -15,6 +13,8 @@ const socialLinks = [
 ];
 
 export default function PortfolioSidebar() {
+  const { activeSection } = usePortfolioInteraction();
+
   return (
     <aside className="flex flex-col border-b border-border pb-10 lg:sticky lg:top-12 lg:h-[calc(100vh-6rem)] lg:border-b-0 lg:pb-0">
       <div aria-hidden="true" className="h-32 shrink-0 sm:h-36 lg:h-[11.5rem]" />
@@ -42,17 +42,29 @@ export default function PortfolioSidebar() {
 
       <nav aria-label="Section navigation" className="mt-10 hidden lg:block">
         <ul className="space-y-3">
-          {navigation.map((item) => (
-            <li key={item.href}>
+          {PORTFOLIO_SECTIONS.map((item) => {
+            const isActive = activeSection === item.id;
+
+            return <li key={item.id}>
               <a
-                href={item.href}
-                className="group inline-flex items-center gap-3 rounded-sm py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                href={`#${item.id}`}
+                aria-current={isActive ? "location" : undefined}
+                className={cn(
+                  "group inline-flex items-center gap-3 rounded-sm py-1 text-sm font-medium transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background motion-reduce:transition-none",
+                  isActive ? "text-primary" : "text-muted-foreground",
+                )}
               >
-                <span className="h-px w-6 bg-border transition-all group-hover:w-10 group-hover:bg-primary" aria-hidden />
+                <span
+                  className={cn(
+                    "h-px bg-border transition-[width,background-color] duration-300 group-hover:w-10 group-hover:bg-primary motion-reduce:transition-none",
+                    isActive ? "w-10 bg-primary" : "w-6",
+                  )}
+                  aria-hidden
+                />
                 {item.label}
               </a>
-            </li>
-          ))}
+            </li>;
+          })}
         </ul>
       </nav>
 
@@ -90,16 +102,22 @@ export default function PortfolioSidebar() {
 
       <nav aria-label="Mobile section navigation" className="mt-8 lg:hidden">
         <ul className="flex flex-wrap gap-x-4 gap-y-2">
-          {navigation.map((item) => (
-            <li key={item.href}>
+          {PORTFOLIO_SECTIONS.map((item) => {
+            const isActive = activeSection === item.id;
+
+            return <li key={item.id}>
               <a
-                href={item.href}
-                className="rounded-sm text-sm font-medium text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                href={`#${item.id}`}
+                aria-current={isActive ? "location" : undefined}
+                className={cn(
+                  "rounded-sm text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background motion-reduce:transition-none",
+                  isActive ? "text-primary decoration-primary/50" : "text-muted-foreground",
+                )}
               >
                 {item.label}
               </a>
-            </li>
-          ))}
+            </li>;
+          })}
         </ul>
       </nav>
     </aside>

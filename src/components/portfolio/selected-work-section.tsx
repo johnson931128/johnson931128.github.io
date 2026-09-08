@@ -1,15 +1,47 @@
 import { ProjectCard } from "@/components/project-card";
+import FeaturedProjectCard from "@/components/portfolio/featured-project-card";
 import { DATA } from "@/data/resume";
 import { LockKeyhole } from "lucide-react";
 
 export default function SelectedWorkSection() {
+  const featuredTitles = ["AMR Software Stack", "CtrlKine-AMR"];
+  const featuredProjects = featuredTitles
+    .map((title) => DATA.projects.find((project) => project.title === title))
+    .filter((project): project is Exclude<(typeof DATA.projects)[number], { private: true }> =>
+      Boolean(project && !project.private),
+    );
+  const selectedProjects = DATA.projects.filter(
+    (project) => !featuredTitles.includes(project.title),
+  );
+  const captions: Record<string, string> = {
+    "AMR Software Stack": "Fig. 01 — ROS 2 AMR simulation and physical deployment",
+    "CtrlKine-AMR": "Fig. 02 — Lightweight 2D AMR simulation environment",
+  };
+
   return (
-    <div className="space-y-6">
+    <div>
       <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-        A selection of projects from the current portfolio data.
+        Two systems that connect simulation, navigation, and real-world robotics constraints.
       </p>
-      <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
-        {DATA.projects.map((project) => {
+      <div className="mt-8">
+        {featuredProjects.map((project, index) => (
+          <FeaturedProjectCard
+            key={project.title}
+            figure={`Fig. 0${index + 1}`}
+            caption={captions[project.title]}
+            project={project}
+          />
+        ))}
+      </div>
+
+      <div className="mt-16 flex items-baseline justify-between gap-4 border-b border-border pb-4">
+        <h3 className="text-base font-semibold tracking-tight text-foreground">Selected Projects</h3>
+        <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
+          Additional work
+        </p>
+      </div>
+      <div className="mt-6 grid grid-cols-1 gap-5 xl:grid-cols-2">
+        {selectedProjects.map((project) => {
           if (project.private) {
             return (
               <div
