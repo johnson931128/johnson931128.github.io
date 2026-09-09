@@ -1,7 +1,6 @@
 "use client";
 
 import ViewportVideo from "@/components/portfolio/viewport-video";
-import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -25,7 +24,7 @@ const projects = projectTitles
 
 function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
   if (project.video) {
-    return <ViewportVideo src={project.video} className="aspect-[16/10] h-full bg-[#151713]" />;
+    return <ViewportVideo src={project.video} className="aspect-[16/10] h-full bg-[#15171a]" />;
   }
 
   if (project.image) {
@@ -37,21 +36,21 @@ function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
         height={800}
         priority={project.title === "AMR Software Stack"}
         draggable={false}
-        className="aspect-[16/10] h-full w-full object-cover"
+        className="aspect-[16/10] h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
       />
     );
   }
 
   if (project.title === "Verilog FPGA Game") {
     return (
-      <div className="relative grid aspect-[16/10] h-full w-full place-items-center overflow-hidden bg-[#171915] p-8 text-white">
+      <div className="relative grid aspect-[16/10] h-full w-full place-items-center overflow-hidden bg-[#15171a] p-8 text-white">
         <div className="project-grid absolute inset-0 opacity-25" aria-hidden />
         <svg viewBox="0 0 720 420" className="relative w-full max-w-2xl" aria-hidden>
           <g fill="none" stroke="currentColor" strokeWidth="1.4" opacity="0.62">
             <path d="M75 210H205M285 210H410M500 210H650" />
             <path d="M245 115V65H455V115M455 305v50H245v-50" />
           </g>
-          <g fill="#171915" stroke="currentColor" strokeWidth="1.5">
+          <g fill="#15171a" stroke="currentColor" strokeWidth="1.5">
             <rect x="75" y="165" width="130" height="90" rx="4" />
             <rect x="205" y="115" width="80" height="190" rx="4" />
             <rect x="410" y="115" width="90" height="190" rx="4" />
@@ -68,7 +67,7 @@ function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
             <text x="533" y="226">OUTPUT</text>
           </g>
         </svg>
-        <p className="relative mt-4 font-mono text-[0.65rem] uppercase tracking-[0.24em] text-white/45">
+        <p className="relative mt-4 font-mono text-xs uppercase tracking-[0.18em] text-white/45">
           Basys 3 / signal path
         </p>
       </div>
@@ -76,20 +75,20 @@ function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
   }
 
   return (
-    <div className="relative flex aspect-[16/10] h-full w-full flex-col justify-between overflow-hidden bg-[#171915] p-7 font-mono text-white sm:p-10">
+    <div className="relative flex aspect-[16/10] h-full w-full flex-col justify-between overflow-hidden bg-[#15171a] p-7 font-mono text-white sm:p-10">
       <div className="project-grid absolute inset-0 opacity-15" aria-hidden />
-      <div className="relative flex items-center justify-between text-[0.65rem] uppercase tracking-[0.2em] text-white/45">
+      <div className="relative flex items-center justify-between text-xs uppercase tracking-[0.16em] text-white/45">
         <span>WUWAOS / shell</span>
         <span>C++17</span>
       </div>
       <div className="relative space-y-3 text-sm text-white/80 sm:text-base">
-        <p><span className="text-emerald-300">wuwaos$</span> help</p>
-        <p><span className="text-emerald-300">wuwaos$</span> run editor 5</p>
-        <p><span className="text-emerald-300">wuwaos$</span> ps</p>
-        <p><span className="text-emerald-300">wuwaos$</span> step</p>
-        <p className="animate-pulse text-emerald-300 motion-reduce:animate-none">_</p>
+        <p><span className="text-[#6f91ff]">wuwaos$</span> help</p>
+        <p><span className="text-[#6f91ff]">wuwaos$</span> run editor 5</p>
+        <p><span className="text-[#6f91ff]">wuwaos$</span> ps</p>
+        <p><span className="text-[#6f91ff]">wuwaos$</span> step</p>
+        <p className="text-[#ff7548]">_</p>
       </div>
-      <div className="relative flex flex-wrap gap-2 text-[0.62rem] uppercase tracking-[0.16em] text-white/45">
+      <div className="relative flex flex-wrap gap-2 text-xs uppercase tracking-[0.13em] text-white/45">
         <span>Process model</span><span>/</span><span>Kernel</span><span>/</span><span>FCFS</span>
       </div>
     </div>
@@ -148,37 +147,43 @@ export default function ProjectShowcase() {
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onWheel={handleWheel}
-      className="scroll-mt-24 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-8 focus-visible:ring-offset-background"
+      className="project-showcase reveal-exp-showcase scroll-mt-24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-8 focus-visible:ring-offset-[#eee9dd]"
     >
-      <div className="mb-5 flex items-end justify-between gap-6">
+      <div className="mb-6 flex items-end justify-between gap-6 border-b border-foreground/20 pb-5">
         <div>
-          <p className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.2em] text-primary">Selected work / 03</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Project showcase</h2>
+          <p className="section-kicker"><span>03</span> Selected work</p>
+          <h2 className="font-display mt-3 text-4xl leading-none tracking-[-0.035em] sm:text-5xl">Project showcase</h2>
         </div>
-        <p className="font-mono text-xs tabular-nums text-muted-foreground" aria-live="polite">
+        <p className="project-index font-mono text-sm tabular-nums text-foreground" aria-live="polite">
           {String(activeIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
         </p>
       </div>
 
       <article key={project.title} className="showcase-slide-in">
-        <div
-          className="cursor-grab touch-pan-y select-none overflow-hidden rounded-sm border border-border bg-muted/35 active:cursor-grabbing"
+        <figure className="project-media-stage">
+          <div
+          className="project-media-reveal cursor-grab touch-pan-y select-none overflow-hidden border border-foreground/20 bg-[#15171a] active:cursor-grabbing"
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
           onPointerCancel={() => { dragStart.current = null; }}
         >
-          <ProjectMedia project={project} />
-        </div>
+            <ProjectMedia project={project} />
+          </div>
+          <figcaption className="project-figcaption">
+            <span className="text-[#d54b22]">FIG. {String(activeIndex + 1).padStart(2, "0")}</span>
+            <span>Selected project / media study</span>
+          </figcaption>
+        </figure>
 
-        <div className="mt-6 grid gap-5 border-b border-border pb-7 sm:grid-cols-[minmax(0,1fr)_auto]">
-          <div>
-            <h3 className="text-2xl font-semibold tracking-[-0.03em]">{project.title}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{project.subtitle}</p>
+        <div className="mt-7 grid gap-7 border-b border-foreground/20 pb-8 sm:grid-cols-[minmax(0,1fr)_auto]">
+          <div className="project-copy-reveal">
+            <h3 className="font-display text-4xl leading-none tracking-[-0.035em] sm:text-5xl">{project.title}</h3>
+            <p className="mt-3 text-base font-medium text-primary">{project.subtitle}</p>
             {project.description ? (
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">{project.description}</p>
+              <p className="project-description-reveal mt-5 max-w-2xl text-[0.95rem] leading-7 text-muted-foreground">{project.description}</p>
             ) : null}
           </div>
-          <div className="flex flex-wrap items-start gap-2 sm:max-w-56 sm:justify-end">
+          <div className="project-actions-reveal flex flex-wrap items-start gap-x-5 gap-y-3 sm:max-w-64 sm:justify-end">
             {project.links.map((link) => (
               <Link
                 key={`${project.title}-${link.type}`}
@@ -186,7 +191,7 @@ export default function ProjectShowcase() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download={"download" in link ? link.download : undefined}
-                className="inline-flex items-center gap-1.5 rounded-sm border border-border bg-background px-3 py-2 text-xs font-medium transition-[color,border-color,transform] hover:-translate-y-px hover:border-primary/45 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                className="project-action-link"
               >
                 {link.icon}{link.type}<ArrowUpRight className="size-3" aria-hidden />
               </Link>
@@ -194,17 +199,15 @@ export default function ProjectShowcase() {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-1.5">
+        <div className="project-tech-list mt-5 flex flex-wrap gap-x-0 gap-y-2 font-mono text-xs uppercase tracking-[0.1em] text-foreground/55">
           {project.technologies.map((technology) => (
-            <Badge key={technology} variant="outline" className="h-6 border-border bg-background/70 px-2 text-[0.65rem] font-medium">
-              {technology}
-            </Badge>
+            <span key={technology}>{technology}</span>
           ))}
         </div>
       </article>
 
-      <div className="mt-8 flex items-center justify-between gap-6">
-        <div className="flex gap-2" aria-label="Choose a project slide">
+      <div className="mt-9 flex items-center justify-between gap-6">
+        <div className="flex items-center gap-2" aria-label="Choose a project slide">
           {projects.map((item, index) => (
             <button
               key={item.title}
@@ -213,8 +216,8 @@ export default function ProjectShowcase() {
               aria-label={`Show ${item.title}`}
               aria-current={index === activeIndex ? "true" : undefined}
               className={cn(
-                "h-1 rounded-full transition-[width,background-color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 motion-reduce:transition-none",
-                index === activeIndex ? "w-8 bg-primary" : "w-4 bg-border hover:bg-muted-foreground/50",
+                "project-pagination h-1.5 transition-[width,background-color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 motion-reduce:transition-none",
+                index === activeIndex ? "w-12 bg-primary" : "w-5 bg-foreground/20 hover:bg-primary/45",
               )}
             />
           ))}
@@ -224,17 +227,17 @@ export default function ProjectShowcase() {
             type="button"
             onClick={() => goTo(activeIndex - 1)}
             aria-label="Previous project"
-            className="grid size-10 place-items-center rounded-full border border-border transition-colors hover:border-primary/45 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 motion-reduce:transition-none"
+            className="carousel-arrow"
           ><ArrowLeft className="size-4" aria-hidden /></button>
           <button
             type="button"
             onClick={() => goTo(activeIndex + 1)}
             aria-label="Next project"
-            className="grid size-10 place-items-center rounded-full border border-border transition-colors hover:border-primary/45 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 motion-reduce:transition-none"
+            className="carousel-arrow"
           ><ArrowRight className="size-4" aria-hidden /></button>
         </div>
       </div>
-      <p className="mt-4 text-right font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
+      <p className="mt-4 text-right font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">
         Drag / trackpad / arrow keys
       </p>
     </div>

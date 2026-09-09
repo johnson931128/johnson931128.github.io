@@ -10,33 +10,38 @@ export default function ExperienceProjectSection() {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="full-bleed relative scroll-mt-0 border-y border-border bg-[#f2f0e8]/55"
+      className="experience-section full-bleed relative scroll-mt-0 overflow-hidden border-y border-border bg-[#eee9dd]"
     >
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 sm:px-10 sm:py-28 lg:grid-cols-[minmax(16rem,0.7fr)_minmax(0,1.7fr)] lg:gap-20 lg:px-14 lg:py-36">
-        <aside className="lg:sticky lg:top-16 lg:self-start">
-          <p className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.2em] text-primary">
-            Experience / 02
+      <div className="experience-blue-rule absolute inset-x-0 top-0 h-1.5 bg-primary" aria-hidden />
+      <p className="experience-watermark font-display" aria-hidden>EXPERIENCE</p>
+      <div className="relative mx-auto grid max-w-7xl gap-16 px-6 py-24 sm:px-10 sm:py-28 lg:grid-cols-[minmax(16rem,0.7fr)_minmax(0,1.7fr)] lg:gap-20 lg:px-14 lg:py-36">
+        <aside className="experience-aside lg:sticky lg:top-16 lg:self-start">
+          <p className="section-kicker reveal-exp-kicker">
+            <span>02</span> Experience
           </p>
-          <h2 id="experience-heading" className="mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-            In practice
-          </h2>
+          <div className="reveal-mask mt-4">
+            <h2 id="experience-heading" className="font-display reveal-exp-heading text-5xl leading-none tracking-[-0.04em] sm:text-6xl">
+              In practice
+            </h2>
+          </div>
 
-          <div className="mt-10 border-l border-foreground/25 pl-6">
+          <div className="reveal-exp-details mt-12 border-l-2 border-primary pl-6 sm:pl-8">
+            <p className="mb-5 font-mono text-xs uppercase tracking-[0.16em] text-[#d54b22]">FIG. 01 / INDUSTRY</p>
             <BrandMark
               src={experience.logoUrl}
               alt={`${experience.company} logo`}
-              className="size-14 bg-white"
+              className="size-16 rounded-none border-foreground/15 bg-white p-2"
             />
-            <h3 className="mt-6 text-xl font-semibold tracking-tight">{experience.company}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{experience.title}</p>
-            <p className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+            <h3 className="font-display mt-7 text-3xl leading-tight tracking-[-0.025em]">{experience.company}</h3>
+            <p className="mt-2 text-base font-medium text-foreground/72">{experience.title}</p>
+            <p className="mt-5 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">
               <MapPin className="size-3.5" aria-hidden />
               {experience.location}
             </p>
-            <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground">
+            <p className="mt-7 max-w-sm text-[0.95rem] leading-7 text-muted-foreground">
               {experience.description}
             </p>
-            <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">
+            <p className="mt-7 font-mono text-xs uppercase tracking-[0.14em] text-foreground/52">
               {experience.start} — {experience.end}
             </p>
           </div>
