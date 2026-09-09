@@ -14,7 +14,7 @@ export default function ExperienceProjectSection() {
     >
       <div className="experience-blue-rule absolute inset-x-0 top-0 h-1.5 bg-primary" aria-hidden />
       <p className="experience-watermark font-display" aria-hidden>EXPERIENCE</p>
-      <div className="relative mx-auto grid max-w-7xl gap-16 px-6 py-24 sm:px-10 sm:py-28 lg:grid-cols-[minmax(16rem,0.7fr)_minmax(0,1.7fr)] lg:gap-20 lg:px-14 lg:py-36">
+      <div className="experience-layout relative mx-auto grid max-w-7xl gap-16 px-6 py-24 sm:px-10 sm:py-28 lg:grid-cols-[minmax(16rem,0.7fr)_minmax(0,1.7fr)] lg:gap-20 lg:px-14 lg:py-36">
         <aside className="experience-aside lg:sticky lg:top-16 lg:self-start">
           <p className="section-kicker reveal-exp-kicker">
             <span>02</span> Experience
@@ -25,7 +25,7 @@ export default function ExperienceProjectSection() {
             </h2>
           </div>
 
-          <div className="reveal-exp-details mt-12 border-l-2 border-primary pl-6 sm:pl-8">
+          <div className="experience-details reveal-exp-details mt-12 border-l-2 border-primary pl-6 sm:pl-8">
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.16em] text-[#d54b22]">FIG. 01 / INDUSTRY</p>
             <BrandMark
               src={experience.logoUrl}

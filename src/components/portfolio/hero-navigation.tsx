@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 
 const navigation = [
   { href: "#about", id: "about", label: "About" },
-  { href: "#experience", id: "experience", label: "Experience" },
-  { href: "#work", id: "work", label: "Work" },
-  { href: "#learning-notes", id: "learning-notes", label: "Learning Notes" },
+  { href: "#experience", id: "experience", label: "Work" },
+  { href: "#learning-notes", id: "learning-notes", label: "Notes" },
 ] as const;
 
 export default function HeroNavigation() {
@@ -28,11 +27,19 @@ export default function HeroNavigation() {
     );
 
     sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const handleSceneChange = (event: Event) => {
+      const id = (event as CustomEvent<{ id: (typeof navigation)[number]["id"] }>).detail.id;
+      if (navigation.some((item) => item.id === id)) setActiveId(id);
+    };
+    window.addEventListener("portfolio:scenechange", handleSceneChange);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("portfolio:scenechange", handleSceneChange);
+    };
   }, []);
 
   return (
-    <nav aria-label="Primary navigation" className="hero-copy-right">
+    <nav aria-label="Primary navigation" className="hero-mobile-nav hero-copy-right">
       <ul className="hero-nav-list">
         {navigation.map((item) => {
           const active = activeId === item.id;
@@ -40,6 +47,7 @@ export default function HeroNavigation() {
             <li key={item.href}>
               <a
                 href={item.href}
+                data-scene-target={item.id}
                 aria-current={active ? "location" : undefined}
                 className="hero-nav-link"
               >

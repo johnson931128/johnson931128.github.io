@@ -15,7 +15,7 @@ export default function LearningNotesSection() {
       aria-labelledby="learning-notes-heading"
       className="learning-notes-section full-bleed relative scroll-mt-0 overflow-hidden bg-[#faf8f2]"
     >
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 sm:py-28 lg:px-14 lg:py-36">
+      <div className="learning-layout mx-auto max-w-7xl px-6 py-24 sm:px-10 sm:py-28 lg:px-14 lg:py-36">
         <div className="notes-heading-group mb-12 grid gap-6 md:grid-cols-[1fr_minmax(18rem,0.7fr)] md:items-end">
           <div>
             <p className="section-kicker">
@@ -30,7 +30,7 @@ export default function LearningNotesSection() {
           </p>
         </div>
 
-        <div className="notes-rule border-t border-foreground/25">
+        <div className="learning-index notes-rule border-t border-foreground/25">
           {subjects.map((subject, index) => (
             <Link
               key={subject.slug}

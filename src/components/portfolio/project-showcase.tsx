@@ -144,15 +144,16 @@ export default function ProjectShowcase() {
       role="region"
       aria-roledescription="carousel"
       aria-label="Selected projects"
+      data-carousel-interactive
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onWheel={handleWheel}
       className="project-showcase reveal-exp-showcase scroll-mt-24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-8 focus-visible:ring-offset-[#eee9dd]"
     >
-      <div className="mb-6 flex items-end justify-between gap-6 border-b border-foreground/20 pb-5">
+      <div className="project-showcase-header mb-6 flex items-end justify-between gap-6 border-b border-foreground/20 pb-5">
         <div>
           <p className="section-kicker"><span>03</span> Selected work</p>
-          <h2 className="font-display mt-3 text-4xl leading-none tracking-[-0.035em] sm:text-5xl">Project showcase</h2>
+          <h2 className="project-showcase-title font-display mt-3 text-4xl leading-none tracking-[-0.035em] sm:text-5xl">Project showcase</h2>
         </div>
         <p className="project-index font-mono text-sm tabular-nums text-foreground" aria-live="polite">
           {String(activeIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
@@ -175,7 +176,7 @@ export default function ProjectShowcase() {
           </figcaption>
         </figure>
 
-        <div className="mt-7 grid gap-7 border-b border-foreground/20 pb-8 sm:grid-cols-[minmax(0,1fr)_auto]">
+        <div className="project-meta mt-7 grid gap-7 border-b border-foreground/20 pb-8 sm:grid-cols-[minmax(0,1fr)_auto]">
           <div className="project-copy-reveal">
             <h3 className="font-display text-4xl leading-none tracking-[-0.035em] sm:text-5xl">{project.title}</h3>
             <p className="mt-3 text-base font-medium text-primary">{project.subtitle}</p>
@@ -206,7 +207,7 @@ export default function ProjectShowcase() {
         </div>
       </article>
 
-      <div className="mt-9 flex items-center justify-between gap-6">
+      <div className="project-controls mt-9 flex items-center justify-between gap-6">
         <div className="flex items-center gap-2" aria-label="Choose a project slide">
           {projects.map((item, index) => (
             <button

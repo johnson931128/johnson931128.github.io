@@ -2,6 +2,7 @@ import ExperienceProjectSection from "@/components/portfolio/experience-project-
 import HeroSection from "@/components/portfolio/hero-section";
 import LearningNotesSection from "@/components/portfolio/learning-notes-section";
 import PortfolioFooter from "@/components/portfolio/portfolio-footer";
+import PortfolioSceneController from "@/components/portfolio/portfolio-scene-controller";
 
 export default function Page() {
   return (
@@ -13,9 +14,11 @@ export default function Page() {
         Skip to content
       </a>
       <main id="main-content">
-        <HeroSection />
-        <ExperienceProjectSection />
-        <LearningNotesSection />
+        <PortfolioSceneController>
+          <HeroSection />
+          <ExperienceProjectSection />
+          <LearningNotesSection />
+        </PortfolioSceneController>
       </main>
       <PortfolioFooter />
     </>

@@ -8,7 +8,7 @@ export default function HeroSection() {
     <section
       id="about"
       aria-labelledby="hero-heading"
-      className="full-bleed relative -mt-10 min-h-[100svh] overflow-hidden bg-background sm:-mt-14 lg:-mt-16"
+      className="hero-section full-bleed relative -mt-10 min-h-[100svh] overflow-hidden bg-background sm:-mt-14 lg:-mt-16"
     >
       <div className="hero-dark-plane absolute inset-0 bg-[#15171a]" aria-hidden />
       <div className="hero-blueprint-line absolute inset-y-0 left-[43%] z-[1] hidden w-px md:block" aria-hidden />
@@ -27,7 +27,7 @@ export default function HeroSection() {
         </div>
       </header>
 
-      <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-rows-[72svh_auto] px-6 sm:px-10 md:grid-cols-[48%_52%] md:grid-rows-1 md:items-center lg:px-14">
+      <div className="hero-layout relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-rows-[72svh_auto] px-6 sm:px-10 md:grid-cols-[48%_52%] md:grid-rows-1 md:items-center lg:px-14">
         <div className="hero-copy-left flex max-w-sm flex-col items-start pt-32 text-white md:justify-center md:pt-0">
           <div className="flex items-end gap-4">
             <div className="hero-identity-mark" aria-label="Johnson Fan identity mark">
@@ -63,7 +63,7 @@ export default function HeroSection() {
             <p className="section-kicker">
               <span>01</span> About
             </p>
-            <p className="font-display mt-7 text-3xl leading-[1.05] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-[3.35rem]">
+            <p className="hero-intro font-display mt-7 text-3xl leading-[1.05] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-[3.35rem]">
               {DATA.heroIntro}
             </p>
             <p className="mt-7 max-w-[34rem] text-base leading-7 text-muted-foreground sm:text-[1.05rem] sm:leading-8">
@@ -71,6 +71,7 @@ export default function HeroSection() {
             </p>
             <a
               href="#experience"
+              data-scene-target="experience"
               className="editorial-link mt-10"
             >
               Explore the work
