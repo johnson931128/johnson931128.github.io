@@ -28,19 +28,11 @@ export default function HeroSection() {
       </header>
 
       <div className="hero-layout relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-rows-[72svh_auto] px-6 sm:px-10 md:grid-cols-[48%_52%] md:grid-rows-1 md:items-center lg:px-14">
-        <div className="hero-copy-left flex max-w-sm flex-col items-start pt-32 text-white md:justify-center md:pt-0">
-          <div className="flex items-end gap-4">
-            <div className="hero-identity-mark" aria-label="Johnson Fan identity mark">
-              <span className="hero-identity-slash" aria-hidden />
-              <span className="hero-identity-letters">JF</span>
-              <span className="hero-signal-dot" aria-hidden />
-            </div>
-            <BrandMark
-              src="/brands/ncku.jpg"
-              alt="National Cheng Kung University logo"
-              size="compact"
-              className="mb-1 rounded-none border-white/20 bg-white"
-            />
+        <div className="hero-copy-left flex max-w-sm flex-col items-start pt-32 text-white md:justify-center md:pt-0 md:pl-8 2xl:pl-12">
+          <div className="hero-identity-mark" aria-label="Johnson Fan identity mark">
+            <span className="hero-identity-slash" aria-hidden />
+            <span className="hero-identity-letters">JF</span>
+            <span className="hero-signal-dot" aria-hidden />
           </div>
           <p className="mt-8 font-mono text-xs uppercase tracking-[0.18em] text-white/52">
             Archive no. 01 — 2026
@@ -51,11 +43,19 @@ export default function HeroSection() {
             Fan
           </h1>
           <p className="mt-5 text-xl tracking-[0.08em] text-white/72">范舜傑</p>
-          <p className="mt-8 max-w-xs text-[0.95rem] leading-7 text-white/62">
-            Engineering Science
-            <br />
-            National Cheng Kung University
-          </p>
+          <div className="mt-8 flex items-center gap-3" aria-label="Education">
+            <BrandMark
+              src="/brands/ncku.jpg"
+              alt="National Cheng Kung University logo"
+              className="rounded-none border-white/20 bg-white"
+            />
+            <div className="leading-tight">
+              <p className="whitespace-nowrap text-sm font-medium text-white/70">
+                National Cheng Kung University
+              </p>
+              <p className="mt-1 text-sm text-white/48">Engineering Science</p>
+            </div>
+          </div>
         </div>
 
         <div className="hero-copy-right flex items-end pb-16 md:items-center md:pb-0 md:pl-[15%] lg:pl-[18%]">
