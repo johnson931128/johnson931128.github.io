@@ -32,6 +32,7 @@ export default function PortfolioSceneController({ children }: SceneControllerPr
   const [activeIndex, setActiveIndex] = useState(0);
   const [desktop, setDesktop] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
+  const [transitionFrom, setTransitionFrom] = useState(0);
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
   const activeRef = useRef(0);
   const desktopRef = useRef(false);
@@ -47,6 +48,7 @@ export default function PortfolioSceneController({ children }: SceneControllerPr
     if (clamped === current || Date.now() < lockedUntil.current) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setTransitionFrom(current);
     setDirection(clamped > current ? "forward" : "backward");
     setTransitioning(true);
     activeRef.current = clamped;
@@ -235,7 +237,13 @@ export default function PortfolioSceneController({ children }: SceneControllerPr
             </div>
           );
         })}
-        {transitioning ? <div className="scene-wipe" data-direction={direction} data-to={activeIndex} aria-hidden /> : null}
+        {transitioning ? (
+          <div className="scene-wipe" data-direction={direction} data-from={transitionFrom} data-to={activeIndex} aria-hidden>
+            <span className="scene-crt-scanlines" />
+            <span className="scene-crt-tear" />
+            <span className="scene-crt-flare" />
+          </div>
+        ) : null}
       </div>
     </div>
   );

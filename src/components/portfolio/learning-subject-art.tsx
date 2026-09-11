@@ -28,16 +28,11 @@ export default function LearningSubjectArt({ subject }: { subject: LearningNoteS
 
   if (subject === "operating-systems") {
     return (
-      <div className="flex h-full w-full items-center justify-end gap-8 p-8 font-mono text-xs sm:p-12">
-        <div className="hidden w-72 space-y-3 border border-current/35 p-5 sm:block">
-          <p>$ ps --all</p><p>PID&nbsp;&nbsp;STATE&nbsp;&nbsp;QUEUE</p><p>01&nbsp;&nbsp;&nbsp;run&nbsp;&nbsp;&nbsp;&nbsp;ready</p><p>02&nbsp;&nbsp;&nbsp;wait&nbsp;&nbsp;&nbsp;blocked</p>
-        </div>
-        <div className="grid h-32 w-48 grid-cols-4 gap-1" aria-hidden>
-          {Array.from({ length: 20 }).map((_, index) => (
-            <span key={index} className={index % 5 === 0 || index === 13 ? "bg-current/45" : "border border-current/25"} />
-          ))}
-        </div>
-      </div>
+      <img
+        src="/notes/operating-systems-dinosaur.png"
+        alt=""
+        className="operating-systems-art h-full w-full object-cover"
+      />
     );
   }
 

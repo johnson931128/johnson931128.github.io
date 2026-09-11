@@ -78,7 +78,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" forcedTheme="light" enableSystem={false}>
           <TooltipProvider delayDuration={0}>
-            <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-16">
+            <div className="site-shell relative z-10 mx-auto w-full max-w-6xl px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-16">
               {children}
             </div>
           </TooltipProvider>
