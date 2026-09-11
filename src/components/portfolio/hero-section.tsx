@@ -59,7 +59,7 @@ export default function HeroSection() {
         </div>
 
         <div className="hero-copy-right flex items-end pb-16 md:items-center md:pb-0 md:pl-[15%] lg:pl-[18%]">
-          <div className="hero-about-copy max-w-lg md:pl-[clamp(1.5rem,2vw,2.5rem)]">
+          <div className="hero-about-copy max-w-lg">
             <p className="section-kicker">
               <span>01</span> About
             </p>

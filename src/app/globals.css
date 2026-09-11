@@ -357,6 +357,12 @@
   animation: hero-copy-right-in 650ms 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+@media (min-width: 768px) {
+  .hero-about-copy {
+    padding-left: clamp(1.5rem, 2vw, 2.5rem);
+  }
+}
+
 .hero-wordmark {
   display: flex;
   align-items: center;
@@ -654,14 +660,22 @@
 }
 
 .knowledge-row-grid {
+  min-height: inherit;
   grid-template-columns: 2.5rem minmax(0, 1fr) auto;
 }
 
 .knowledge-cell {
   min-width: 0;
+  padding-block: 1.75rem;
+}
+
+.learning-index {
+  border-right: 1px solid rgb(31 33 38 / 0.25);
+  border-left: 1px solid rgb(31 33 38 / 0.25);
 }
 
 .knowledge-number {
+  padding-left: 1rem;
   border-right: 1px solid rgb(31 33 38 / 0.16);
 }
 
@@ -671,7 +685,7 @@
 }
 
 .knowledge-meta {
-  padding-left: 0.75rem;
+  padding-inline: 0.75rem;
 }
 
 .knowledge-row:hover,
@@ -1393,16 +1407,16 @@
   }
 
   .portfolio-scenes[data-enhanced="true"] .notes-heading-group {
-    gap: 2rem;
     margin-bottom: clamp(1rem, 2.3vh, 1.6rem);
   }
 
   .portfolio-scenes[data-enhanced="true"] .notes-heading-group h2 {
     margin-top: 0.5rem;
     font-size: clamp(3rem, 5.1vw, 4.75rem);
+    white-space: nowrap;
   }
 
-  .portfolio-scenes[data-enhanced="true"] .notes-heading-group > p {
+  .portfolio-scenes[data-enhanced="true"] .notes-heading-meta > p {
     font-size: 0.9rem;
     line-height: 1.6;
   }
@@ -1415,7 +1429,7 @@
 
   .portfolio-scenes[data-enhanced="true"] .knowledge-row {
     min-height: 0;
-    padding: clamp(0.8rem, 1.7vh, 1.2rem) 1.25rem;
+    padding: 0;
   }
 
   .portfolio-scenes[data-enhanced="true"] .knowledge-row-grid {
@@ -1428,7 +1442,11 @@
   }
 
   .portfolio-scenes[data-enhanced="true"] .knowledge-meta {
-    padding-left: clamp(1rem, 1.6vw, 1.35rem);
+    padding-inline: clamp(1rem, 1.6vw, 1.35rem);
+  }
+
+  .portfolio-scenes[data-enhanced="true"] .knowledge-cell {
+    padding-block: clamp(0.8rem, 1.7vh, 1.2rem);
   }
 
   .portfolio-scenes[data-enhanced="true"] .knowledge-title {
@@ -1521,7 +1539,7 @@
     font-size: 3.35rem;
   }
 
-  .portfolio-scenes[data-enhanced="true"] .notes-heading-group > p {
+  .portfolio-scenes[data-enhanced="true"] .notes-heading-meta > p {
     font-size: 0.82rem;
   }
 
@@ -1605,6 +1623,10 @@
 
   .learning-layout {
     padding-top: 5rem;
+  }
+
+  .learning-notes-title {
+    white-space: normal;
   }
 
   .knowledge-number {
