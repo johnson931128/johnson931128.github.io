@@ -24,7 +24,7 @@ const projects = projectTitles
 
 function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
   if (project.video) {
-    return <ViewportVideo src={project.video} className="aspect-[16/10] h-full bg-[#15171a]" />;
+    return <ViewportVideo src={project.video} className="project-video h-full bg-[#15171a] object-contain" />;
   }
 
   if (project.image) {
@@ -170,10 +170,6 @@ export default function ProjectShowcase() {
         >
             <ProjectMedia project={project} />
           </div>
-          <figcaption className="project-figcaption">
-            <span className="text-[#d54b22]">FIG. {String(activeIndex + 1).padStart(2, "0")}</span>
-            <span>Selected project / media study</span>
-          </figcaption>
         </figure>
 
         <div className="project-meta mt-7 grid gap-7 border-b border-foreground/20 pb-8 sm:grid-cols-[minmax(0,1fr)_auto]">
