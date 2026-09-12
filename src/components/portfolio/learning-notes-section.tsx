@@ -19,13 +19,13 @@ export default function LearningNotesSection() {
         <div className="notes-heading-group mb-12">
           <div className="notes-heading-meta grid gap-5 md:grid-cols-[1fr_minmax(18rem,0.7fr)] md:items-end">
             <p className="section-kicker">
-              <span>04</span> Learning notes
+              <span>03</span> Learning notes
             </p>
             <p className="max-w-lg text-base leading-7 text-muted-foreground md:justify-self-end">
               Study notes organized around the systems I keep returning to—from processor pipelines to robot navigation.
             </p>
           </div>
-          <h2 id="learning-notes-heading" className="learning-notes-title font-display mt-4 text-5xl leading-[0.95] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
+          <h2 id="learning-notes-heading" className="learning-notes-title font-display mt-4 text-5xl leading-[0.95] tracking-[-0.025em] sm:text-6xl lg:text-7xl">
             Research Note &amp; Learning Notes
           </h2>
         </div>

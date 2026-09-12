@@ -664,6 +664,10 @@
   grid-template-columns: 2.5rem minmax(0, 1fr) auto;
 }
 
+.learning-notes-title {
+  word-spacing: 0.12em;
+}
+
 .knowledge-cell {
   min-width: 0;
   padding-block: 1.75rem;
@@ -1412,8 +1416,10 @@
 
   .portfolio-scenes[data-enhanced="true"] .notes-heading-group h2 {
     margin-top: 0.5rem;
-    font-size: clamp(3rem, 5.1vw, 4.75rem);
+    font-size: clamp(3rem, 4.4vw, 4rem);
+    letter-spacing: -0.025em;
     white-space: nowrap;
+    word-spacing: 0.14em;
   }
 
   .portfolio-scenes[data-enhanced="true"] .notes-heading-meta > p {
@@ -1536,7 +1542,7 @@
   }
 
   .portfolio-scenes[data-enhanced="true"] .notes-heading-group h2 {
-    font-size: 3.35rem;
+    font-size: 3.15rem;
   }
 
   .portfolio-scenes[data-enhanced="true"] .notes-heading-meta > p {
@@ -1549,6 +1555,12 @@
 
   .portfolio-scenes[data-enhanced="true"] .knowledge-row {
     padding-block: 0.7rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1319px) {
+  .portfolio-scenes[data-enhanced="true"] .learning-layout {
+    padding-right: clamp(5.5rem, 8vw, 6rem);
   }
 }
 

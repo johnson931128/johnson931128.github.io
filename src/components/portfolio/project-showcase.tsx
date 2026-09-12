@@ -152,7 +152,7 @@ export default function ProjectShowcase() {
     >
       <div className="project-showcase-header mb-6 flex items-end justify-between gap-6 border-b border-foreground/20 pb-5">
         <div>
-          <p className="section-kicker"><span>03</span> Selected work</p>
+          <p className="section-kicker"><span>02</span> Selected work</p>
           <h2 className="project-showcase-title font-display mt-3 text-4xl leading-none tracking-[-0.035em] sm:text-5xl">Project showcase</h2>
         </div>
         <p className="project-index font-mono text-sm tabular-nums text-foreground" aria-live="polite">

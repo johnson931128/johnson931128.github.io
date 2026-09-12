@@ -6,10 +6,10 @@ export default function PortfolioFooter() {
   return (
     <footer id="contact" className="portfolio-footer full-bleed relative overflow-hidden border-t border-white/10 bg-[#15171a] text-white">
       <div className="footer-cobalt-rule absolute inset-x-0 top-0 h-1.5 bg-primary" aria-hidden />
-      <div className="footer-figure font-display" aria-hidden>05</div>
+      <div className="footer-figure font-display" aria-hidden>JF</div>
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:px-10 md:grid-cols-[1fr_auto] md:items-end lg:px-14 lg:py-24">
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#ff7548]">05 / Contact signal open</p>
+          <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#ff7548]">Contact signal open</p>
           <h2 className="font-display mt-5 max-w-2xl text-5xl leading-[0.95] tracking-[-0.04em] sm:text-6xl">Continue the conversation.</h2>
           <a
             href={`mailto:${DATA.contact.email}`}
