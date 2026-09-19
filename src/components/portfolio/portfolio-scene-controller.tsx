@@ -178,7 +178,7 @@ export default function PortfolioSceneController({ children }: SceneControllerPr
   return (
     <div
       className="portfolio-scenes full-bleed"
-      data-enhanced={desktop ? "true" : undefined}
+      data-enhanced="true"
       data-transitioning={transitioning ? "true" : undefined}
       data-direction={direction}
       style={stageStyle}
