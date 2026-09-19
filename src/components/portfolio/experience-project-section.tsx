@@ -1,7 +1,8 @@
 import ProjectShowcase from "@/components/portfolio/project-showcase";
 import { DATA } from "@/data/resume";
-import { MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ExperienceProjectSection() {
   const experience = DATA.work[0];
@@ -41,6 +42,19 @@ export default function ExperienceProjectSection() {
             <p className="mt-7 max-w-sm text-[0.95rem] leading-7 text-muted-foreground">
               {experience.description}
             </p>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+              {experience.links.map((link) => (
+                <Link
+                  key={`${experience.company}-${link.type}`}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-action-link"
+                >
+                  {link.icon}{link.type}<ArrowUpRight className="size-3" aria-hidden />
+                </Link>
+              ))}
+            </div>
             <p className="mt-7 font-mono text-xs uppercase tracking-[0.14em] text-foreground/52">
               {experience.start} — {experience.end}
             </p>

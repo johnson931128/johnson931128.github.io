@@ -95,6 +95,9 @@ export const DATA = {
       end: "2027",
       description:
         "Working on software tooling related to industrial communication, including EtherCAT analysis and agent-assisted engineering workflows.",
+      links: [
+        slidesLink("/slides/mdsbu-ethercat-analyzer-architecture"),
+      ],
     },
   ],
   education: [],
