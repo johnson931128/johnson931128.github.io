@@ -1565,6 +1565,24 @@
 }
 
 @media (max-width: 1023px) {
+  .hero-dark-plane,
+  .hero-copy-left,
+  .hero-copy-right,
+  .showcase-slide-in,
+  .project-media-reveal,
+  .project-copy-reveal,
+  .project-description-reveal,
+  .project-actions-reveal,
+  .reveal-exp-heading,
+  .reveal-exp-kicker,
+  .reveal-exp-details,
+  .reveal-exp-showcase,
+  .notes-heading-group,
+  .notes-rule,
+  .knowledge-row {
+    animation: none;
+  }
+
   .portfolio-scene-stage,
   .portfolio-scene {
     position: static;
