@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { Download, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 
 type NavigationItem = {
   href: string;
@@ -32,13 +32,6 @@ const slidesLink = (href: string) => ({
   type: "Slides",
   href,
   icon: <FileText className="size-3" aria-hidden />,
-});
-
-const downloadPptxLink = (href: string) => ({
-  type: "Download PPTX",
-  href,
-  download: true,
-  icon: <Download className="size-3" aria-hidden />,
 });
 
 export const DATA = {
@@ -183,7 +176,7 @@ export const DATA = {
       technologies: ["Verilog", "FPGA", "Basys 3", "VGA"],
       links: [
         githubLink("https://github.com/johnson931128/practice/tree/main/verilog"),
-        downloadPptxLink("/slides/verilog-fpga-game.pptx"),
+        slidesLink("/slides/verilog-fpga-game"),
       ],
       image: "",
       video: "",
