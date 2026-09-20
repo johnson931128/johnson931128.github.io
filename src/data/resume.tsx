@@ -176,6 +176,7 @@ export const DATA = {
       technologies: ["Verilog", "FPGA", "Basys 3", "VGA"],
       links: [
         githubLink("https://github.com/johnson931128/practice/tree/main/verilog"),
+        demoLink("/demos/verilog-fpga-game"),
         slidesLink("/slides/verilog-fpga-game"),
       ],
       image: "",
