@@ -194,6 +194,7 @@ export const DATA = {
       technologies: ["Java", "Swing"],
       links: [
         githubLink("https://github.com/johnson931128/JAVA/tree/main/MazeGame_final_ver"),
+        demoLink("/demos/java-maze-game"),
       ],
       image: "",
       video: "/projects/java-maze-demo.mp4",
