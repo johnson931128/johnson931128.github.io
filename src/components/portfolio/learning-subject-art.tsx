@@ -4,7 +4,15 @@ import type { LearningNoteSubjectSlug } from "@/data/learning-notes";
 
 export default function LearningSubjectArt({ subject }: { subject: LearningNoteSubjectSlug }) {
   if (subject === "amr") {
-    return <img src="/projects/amr-software-stack.jpg" alt="" className="h-full w-full object-cover object-center" />;
+    return (
+      <img
+        src="/projects/amr-software-stack.jpg"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover object-center"
+      />
+    );
   }
 
   if (subject === "computer-organization") {
@@ -29,8 +37,10 @@ export default function LearningSubjectArt({ subject }: { subject: LearningNoteS
   if (subject === "operating-systems") {
     return (
       <img
-        src="/notes/operating-systems-dinosaur.png"
+        src="/notes/operating-systems-dinosaur.webp"
         alt=""
+        loading="lazy"
+        decoding="async"
         className="operating-systems-art h-full w-full object-cover"
       />
     );

@@ -39,7 +39,7 @@ export default function VerilogFpgaGameDemoPage() {
           <video
             controls
             playsInline
-            preload="metadata"
+            preload="none"
             className="aspect-video w-full bg-black object-contain shadow-[0_24px_80px_rgb(0_0_0/0.36)]"
             aria-label="Verilog FPGA Game final project V3 demo video"
           >

@@ -34,7 +34,6 @@ function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
         alt={`${project.title} project preview`}
         width={1280}
         height={800}
-        priority={project.title === "AMR Software Stack"}
         draggable={false}
         className="aspect-[16/10] h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
       />

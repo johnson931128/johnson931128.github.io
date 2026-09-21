@@ -18,6 +18,11 @@ export default function ViewportVideo({ src, className }: ViewportVideoProps) {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (entry.isIntersecting && !video.currentSrc) {
+          video.src = src;
+          video.load();
+        }
+
         if (entry.isIntersecting && entry.intersectionRatio >= 0.35 && !reducedMotion.matches) {
           void video.play().catch(() => undefined);
         } else {
@@ -39,16 +44,15 @@ export default function ViewportVideo({ src, className }: ViewportVideoProps) {
       reducedMotion.removeEventListener("change", handleMotionPreference);
       video.pause();
     };
-  }, []);
+  }, [src]);
 
   return (
     <video
       ref={videoRef}
-      src={src}
       loop
       muted
       playsInline
-      preload="metadata"
+      preload="none"
       tabIndex={-1}
       className={cn("w-full object-cover", className)}
     />
