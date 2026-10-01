@@ -165,6 +165,25 @@ export const DATA = {
       video: "",
     },
     {
+      title: "作業系統樂觀同步機制",
+      subtitle: "Optimistic Synchronization",
+      href: undefined,
+      dates: "",
+      active: false,
+      private: false,
+      description:
+        "實作 Optimistic Synchronization，以 Fine-grained Mutex 與 Validate/Retry 處理多執行緒 Race Condition。",
+      technologies: [
+        "C",
+        "POSIX Threads (pthread)",
+        "Mutex",
+        "Optimistic Synchronization",
+      ],
+      links: [demoLink("/demos/optimistic-synchronization")],
+      image: "/brands/optimistic-synchronization.png",
+      video: "",
+    },
+    {
       title: "Verilog FPGA Game",
       subtitle: "Basys 3 VGA Game System",
       href: "https://github.com/johnson931128/practice/tree/main/verilog",

@@ -13,6 +13,7 @@ const projectTitles = [
   "CtrlKine-AMR",
   "Verilog FPGA Game",
   "WUWAOS",
+  "作業系統樂觀同步機制",
   "Java Maze Game",
 ] as const;
 
@@ -25,6 +26,21 @@ const projects = projectTitles
 function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
   if (project.video) {
     return <ViewportVideo src={project.video} className="project-video h-full bg-[#15171a] object-contain" />;
+  }
+
+  if (project.title === "作業系統樂觀同步機制") {
+    return (
+      <div className="grid aspect-[16/10] h-full w-full place-items-center bg-[#eee9dd] p-10 sm:p-16">
+        <Image
+          src={project.image}
+          alt="Optimistic Synchronization linked-list logo"
+          width={1536}
+          height={864}
+          draggable={false}
+          className="h-full w-full object-contain"
+        />
+      </div>
+    );
   }
 
   if (project.image) {
