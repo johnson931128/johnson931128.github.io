@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Project } from "@/data/portfolio";
 import ResourceLinks from "./resource-links";
+import ProjectVideo from "./project-video";
 import styles from "./portfolio.module.css";
 
 function ProjectPreview({ project }: { project: Project }) {
@@ -14,7 +15,11 @@ export default function ProjectList({ projects }: { projects: readonly Project[]
     const primaryLink = project.caseStudyHref ?? project.links[0]?.href;
     const links = [...(project.caseStudyHref ? [{ label: "Case study", href: project.caseStudyHref }] : []), ...project.links, ...(project.video ? [{ label: "Video", href: project.video }] : [])];
     return <article key={project.id} id={`project-${project.id}`} className={styles.projectRow}>
-      {primaryLink ? <a className={styles.preview} href={primaryLink} aria-label={`Explore ${project.title}`}><ProjectPreview project={project} /></a> : <div className={styles.preview}><ProjectPreview project={project} /></div>}
+      {project.video && project.image ? (
+        <div className={styles.preview}><ProjectVideo title={project.title} src={project.video} poster={project.image} /></div>
+      ) : primaryLink ? (
+        <a className={styles.preview} href={primaryLink} aria-label={`Explore ${project.title}`}><ProjectPreview project={project} /></a>
+      ) : <div className={styles.preview}><ProjectPreview project={project} /></div>}
       <div className={styles.projectCopy}>
         <h3>{project.title}</h3>
         <p className={styles.projectSubtitle}>{project.subtitle}</p>

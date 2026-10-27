@@ -44,6 +44,10 @@
 .projectRow:first-child { padding-top: 4px; }
 .preview { display: block; align-self: start; overflow: hidden; border: 1px solid var(--home-rule); border-radius: 5px; background: #f1f4f2; }
 .projectImage { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
+.videoButton { position: relative; display: block; width: 100%; cursor: pointer; text-align: left; }
+.videoButton:focus-visible { outline: 3px solid var(--home-accent); outline-offset: -4px; }
+.playLabel { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 8px; padding: 5px 11px; border-radius: 3px; background: #203d49; color: white; font-size: 12px; font-weight: 600; }
+.projectVideo { display: block; width: 100%; aspect-ratio: 16 / 10; background: #152129; object-fit: contain; }
 .projectCover { aspect-ratio: 16 / 10; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; background: #eef2ef; }
 .projectCover > span { color: var(--home-muted); font-size: 11px; line-height: 1.5; }
 .projectCover strong { font-size: clamp(23px, 2.5vw, 34px); line-height: 1.2; letter-spacing: -1px; overflow-wrap: anywhere; }

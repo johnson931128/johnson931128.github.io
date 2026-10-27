@@ -29,7 +29,9 @@ export type Experience = {
 };
 
 /** Unset resources are deliberately absent from the rendered navigation. */
-export const portfolioResources: { cv?: PortfolioLink; portrait?: { src: string; alt: string } } = {};
+export const portfolioResources: { cv?: PortfolioLink; portrait?: { src: string; alt: string } } = {
+  cv: { label: "CV", href: "/documents/Fan_Shunjie_Resume.pdf" },
+};
 
 export const portfolioSections: readonly PortfolioSection[] = [
   { id: "about", label: "About" },

@@ -120,7 +120,7 @@ export const DATA = {
         "A lightweight 2D AMR simulator and environment editor built from scratch for validating robot motion, collision behavior, and navigation concepts before hardware deployment.",
       technologies: ["C++", "SFML"],
       links: [githubLink("https://github.com/johnson931128/CtrlKine-AMR")],
-      image: "",
+      image: "/projects/ctrlkine-amr.jpg",
       video: "/projects/ctrlkine-amr.mp4",
     },
     {
@@ -164,7 +164,7 @@ export const DATA = {
         { type: "Documentation", href: "https://johnson931128.github.io/WUWAOS/", icon: <FileText className="size-3" aria-hidden /> },
         githubLink("https://github.com/johnson931128/WUWAOS"),
       ],
-      image: "",
+      image: "/projects/wuwaos-docs.jpg",
       video: "",
     },
     {
@@ -201,8 +201,8 @@ export const DATA = {
         demoLink("/demos/verilog-fpga-game"),
         slidesLink("/slides/verilog-fpga-game"),
       ],
-      image: "",
-      video: "",
+      image: "/projects/verilog-fpga-game.jpg",
+      video: "/demos/verilog-fpga-game/demo-v3.mp4",
     },
     {
       title: "Java Maze Game",
@@ -218,7 +218,7 @@ export const DATA = {
         githubLink("https://github.com/johnson931128/JAVA/tree/main/MazeGame_final_ver"),
         demoLink("/demos/java-maze-game"),
       ],
-      image: "",
+      image: "/projects/java-maze.jpg",
       video: "/projects/java-maze-demo.mp4",
     },
     {

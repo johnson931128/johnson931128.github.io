@@ -41,3 +41,12 @@ Commit each coherent milestone locally. Do not push or publish.
 - Remaining browser checks: keyboard focus/skip-link interaction, reduced-motion emulation, console review, and manual deep-route navigation. Browser automation stopped because it could not confidently identify the current browser URL; no further UI actions were attempted.
 - Reduced-motion CSS and visible focus rules are present and statically inspected. This is not a completed browser acceptance check of those behaviors.
 - No before/after network or CPU profiling was performed, so no numeric claim of startup speed improvement is made.
+
+## Media and CV completion — October 27, 2026
+
+- Added the supplied `Fan_Shunjie_Resume.pdf` unchanged under `public/documents/`. Navigation and biography CV links use the optional resource interface. Source, public copy, and exported copy have identical bytes.
+- Added real video-frame covers for CtrlKine-AMR (25 seconds), FPGA Game (20 seconds), and Java Maze (20 seconds), extracted from the existing MP4s. Added a screenshot of the public WUWAOS documentation; retained the existing AMR and synchronization images.
+- Three local demo videos now play inline after an explicit click. The initial page contains no video elements. Native controls remain available, other players pause when a new player starts, and offscreen players pause. Direct video links remain available without JavaScript.
+- Local browser checks: all six project images loaded; all three videos reached readyState 4 with no media errors and advancing playback time; observed the prior player paused when moving to another video. CV opened in the browser PDF viewer. Desktop and 390 × 844 CSS-pixel mobile views reviewed; mobile scrollWidth 378, no broken images. No captured browser console errors.
+- Final lint: exit 0, 5 existing warnings. Final build: exit 0, 31 static pages, existing Open Graph font-fetch messages. Exported links/assets resolve, three play buttons are present, zero initial video elements are present, and the exported CV matches the original copy.
+- User explicitly authorized pushing the completed redesign and this media/CV update to the existing main branch. No deployment configuration changes.
