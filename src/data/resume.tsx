@@ -164,7 +164,7 @@ export const DATA = {
         { type: "Documentation", href: "https://johnson931128.github.io/WUWAOS/", icon: <FileText className="size-3" aria-hidden /> },
         githubLink("https://github.com/johnson931128/WUWAOS"),
       ],
-      image: "/projects/wuwaos-docs.jpg",
+      image: "/projects/wuwaos-boot.png",
       video: "",
     },
     {
