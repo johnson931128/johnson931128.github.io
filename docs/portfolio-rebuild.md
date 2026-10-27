@@ -22,6 +22,22 @@ Commit each coherent milestone locally. Do not push or publish.
 - Keep existing deep routes working and preserve unrelated files.
 - Use scoped homepage styles to avoid changing article, demo, and slide layouts.
 
-## Validation record
+## Implementation
 
-Pending implementation. Record actual checks and limitations here before handoff.
+- `src/data/portfolio.ts` defines section, project, experience, optional CV/portrait, and case-study interfaces. Adapters reuse `resume.tsx` rather than copying project descriptions into view components.
+- The homepage uses a sticky top navigation and a server-rendered reading layout. Only the active navigation indicator needs client JavaScript. Native anchors retain browser history.
+- Six public projects, two experience entries, existing note subjects, MDX article links, and contact links are migrated. WUWAOS links to its public implementation documentation. Missing dates, CV, and portrait remain omitted. Projects without supplied still images use typographic covers; existing videos remain available as links.
+- Removed the unused scene controller, carousel, associated homepage components, and legacy CSS. Shared demo/slide full-width styling and global reduced-motion rules remain.
+- Existing content pipeline, deployment settings, and demo/slide routes are retained. No push or publication performed.
+
+## Validation record — October 27, 2026
+
+- Final `pnpm lint`: exit 0; 0 errors, 5 existing warnings in generated collection and Open Graph files.
+- Final `pnpm build`: exit 0; TypeScript passed and 31 static pages generated. Existing Open Graph font-fetch messages still occur during generation; they did not fail the build.
+- Desktop browser review at actual CSS dimensions 1440 × 900 and mobile at 390 × 844. No horizontal overflow (`scrollWidth` 1428 and 378 respectively, accounting for the scrollbar).
+- Visually reviewed the biography, project rows, mobile experience entries, contact/footer, and sticky navigation. Verified the Experience anchor clears the mobile header (section top approximately 120px; header bottom approximately 86px), active Experience/Contact indicators, and native Back navigation from Experience to Contact.
+- Inspected rendered title, canonical URL, one h1, zero empty links, and zero homepage video elements.
+- Parsed the final exported HTML: all 46 anchor links have destinations; 21 unique local route/asset paths resolve to exported files; local fragment targets exist. This checks exported file presence, not live external URL availability or manual acceptance of every deep page.
+- Remaining browser checks: keyboard focus/skip-link interaction, reduced-motion emulation, console review, and manual deep-route navigation. Browser automation stopped because it could not confidently identify the current browser URL; no further UI actions were attempted.
+- Reduced-motion CSS and visible focus rules are present and statically inspected. This is not a completed browser acceptance check of those behaviors.
+- No before/after network or CPU profiling was performed, so no numeric claim of startup speed improvement is made.

@@ -58,7 +58,7 @@ export const portfolioProjects: readonly Project[] = projectOrder.map((title) =>
 
 export const portfolioExperiences: readonly Experience[] = [
   ...DATA.work.map((work) => ({
-    id: "delta-electronics",
+    id: work.company.toLowerCase().replaceAll(" ", "-"),
     organization: work.company,
     role: work.title,
     description: work.description,
