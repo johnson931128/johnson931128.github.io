@@ -152,15 +152,18 @@ export const DATA = {
     },
     {
       title: "WUWAOS",
-      subtitle: "Linux-like OS Simulator",
+      subtitle: "RISC-V Operating System",
       href: "https://github.com/johnson931128/WUWAOS",
       dates: "",
       active: false,
       private: false,
       description:
-        "A terminal-first C++17 operating-system simulator with a minimal shell, process model, kernel skeleton, system-call layer, and an FCFS scheduler baseline.",
-      technologies: ["C++17", "CMake", "Systems Programming", "FCFS"],
-      links: [githubLink("https://github.com/johnson931128/WUWAOS")],
+        "An operating system written in C and RISC-V assembly, running on QEMU. The implementation covers process management, round-robin scheduling, Sv39 virtual memory, and the custom WUFS filesystem, with topic-based documentation connecting design decisions to the code.",
+      technologies: ["C", "RISC-V", "QEMU", "Sv39", "WUFS"],
+      links: [
+        { type: "Documentation", href: "https://johnson931128.github.io/WUWAOS/", icon: <FileText className="size-3" aria-hidden /> },
+        githubLink("https://github.com/johnson931128/WUWAOS"),
+      ],
       image: "",
       video: "",
     },
