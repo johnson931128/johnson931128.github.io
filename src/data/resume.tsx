@@ -47,9 +47,9 @@ export const DATA = {
   heroIntro:
     "I build careful, maintainable software that connects system design with real-world constraints.",
   summary:
-    "Engineering Science student at National Cheng Kung University, focused on software systems, embedded development, robotics, and industrial communication. Current work spans EtherCAT-related tooling and agent workflows, AMR simulation and navigation, and systems programming projects. Interested in building maintainable software that connects high-level system design with real hardware constraints.",
+    "Engineering Science student at National Cheng Kung University, building software that connects system design to real hardware.",
   currentStatus:
-    "Working across EtherCAT tooling, AMR systems, and systems programming.",
+    "Current work spans EtherCAT tooling and agent workflows, AMR simulation and navigation, and systems programming.",
   avatarUrl: "",
   skills: [],
   navbar: [] as NavigationItem[],

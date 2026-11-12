@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
 import { portfolioContactLinks, portfolioExperiences, portfolioProjects, portfolioResources, portfolioSections } from "@/data/portfolio";
+import CyberpunkIntro from "@/components/portfolio/home/cyberpunk-intro";
 import Navigation from "@/components/portfolio/home/navigation";
 import Section from "@/components/portfolio/home/section";
 import ResourceLinks from "@/components/portfolio/home/resource-links";
@@ -24,16 +24,7 @@ export default function Page() {
       <a href="#main-content" className={styles.skipLink}>Skip to content</a>
       <Navigation name={DATA.name} nameZh={DATA.nameZh} sections={portfolioSections} cv={portfolioResources.cv} />
       <main id="main-content" className={styles.main} tabIndex={-1}>
-        <section id="about" className={styles.about} aria-labelledby="about-heading">
-          <div className={styles.biography}>
-            <h1 id="about-heading">{DATA.name} <span lang="zh-Hant">{DATA.nameZh}</span></h1>
-            <p className={styles.affiliation}>{DATA.educationLine}</p>
-            <p className={styles.tagline}>Software systems, embedded development & robotics.</p>
-            <p>{DATA.summary}</p><p>{DATA.currentStatus}</p>
-            <ResourceLinks links={[...portfolioContactLinks, ...(portfolioResources.cv ? [portfolioResources.cv] : [])]} label="Contact and profiles" />
-          </div>
-          {portfolioResources.portrait ? <Image className={styles.portrait} src={portfolioResources.portrait.src} alt={portfolioResources.portrait.alt} width={260} height={320} /> : null}
-        </section>
+        <CyberpunkIntro />
         <Section id="work" title="Selected Projects" aside={<a href={DATA.contact.social.GitHub.url}>More on GitHub <span aria-hidden="true">↗</span></a>}><ProjectList projects={portfolioProjects} /></Section>
         <Section id="experience" title="Experience"><ExperienceList experiences={portfolioExperiences} /></Section>
         <Section id="learning-notes" title="Engineering Notes" aside={<Link href="/blog" prefetch={false}>All articles <span aria-hidden="true">↗</span></Link>}><EngineeringNotes /></Section>
