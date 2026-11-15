@@ -34,10 +34,6 @@ export default function CyberpunkIntro() {
           <ResourceLinks links={[...portfolioContactLinks, ...(cv ? [cv] : [])]} label="Contact and profiles" />
         </div>
         {portrait ? <Image className={styles.portrait} src={portrait.src} alt={portrait.alt} width={260} height={320} /> : null}
-        <label className={styles.motionControl}>
-          <input type="checkbox" />
-          Pause effects
-        </label>
       </div>
     </section>
   );

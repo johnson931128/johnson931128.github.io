@@ -72,7 +72,7 @@
   max-width: 570px;
 }
 
-.affiliation, .disciplines, .motionControl {
+.affiliation, .disciplines {
   font-family: var(--font-mono), monospace;
 }
 
@@ -182,41 +182,6 @@
   border-radius: 6px;
 }
 
-.motionControl {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  display: flex;
-  min-height: 36px;
-  align-items: center;
-  gap: 8px;
-  padding: 3px 11px;
-  border: 1px solid rgb(111, 147, 164);
-  border-radius: 3px;
-  background: rgb(8, 13, 27);
-  color: rgb(231, 238, 249);
-  font-size: 11px;
-  cursor: pointer;
-}
-
-.motionControl input {
-  appearance: auto;
-  accent-color: var(--electric);
-}
-
-.motionControl:focus-within {
-  outline: 2px solid var(--electric);
-  outline-offset: 4px;
-}
-
-.hero:has(.motionControl input:checked) {
-  --hero-motion: paused;
-}
-
-.hero :is(.train, .coolMist, .warmMist, .rooftopLight, .towerLight, .name, .arc, .disciplines span) {
-  animation-play-state: var(--hero-motion, running);
-}
-
 @keyframes rail-crossing {
   0% { transform: translateX(285px); opacity: 0; }
   9% { opacity: 1; }
@@ -287,11 +252,6 @@
   .heading {
     font-size: clamp(43px, 12vw, 80px);
   }
-
-  .motionControl {
-    right: 22px;
-    bottom: 17px;
-  }
 }
 
 @media (max-width: 500px) {
@@ -309,7 +269,7 @@
     opacity: 0.18;
   }
 
-  .arc, .motionControl {
+  .arc {
     display: none;
   }
 

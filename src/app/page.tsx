@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DATA } from "@/data/resume";
 import { portfolioContactLinks, portfolioExperiences, portfolioProjects, portfolioResources, portfolioSections } from "@/data/portfolio";
 import CyberpunkIntro from "@/components/portfolio/home/cyberpunk-intro";
+import CurtainTransition from "@/components/portfolio/home/curtain-transition";
 import Navigation from "@/components/portfolio/home/navigation";
 import Section from "@/components/portfolio/home/section";
 import ResourceLinks from "@/components/portfolio/home/resource-links";
@@ -25,6 +26,7 @@ export default function Page() {
       <Navigation name={DATA.name} nameZh={DATA.nameZh} sections={portfolioSections} cv={portfolioResources.cv} />
       <main id="main-content" className={styles.main} tabIndex={-1}>
         <CyberpunkIntro />
+        <CurtainTransition />
         <ProjectGallery projects={portfolioProjects} githubUrl={DATA.contact.social.GitHub.url} />
         <Section id="experience" title="Experience"><ExperienceList experiences={portfolioExperiences} /></Section>
         <Section id="learning-notes" title="Engineering Notes" aside={<Link href="/blog" prefetch={false}>All articles <span aria-hidden="true">↗</span></Link>}><EngineeringNotes /></Section>
