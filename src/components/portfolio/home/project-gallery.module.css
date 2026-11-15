@@ -65,6 +65,39 @@
   height: auto;
 }
 
+/* Swap only the arm and remote area so the sofa and silhouette stay anchored. */
+.raisedPose {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  clip-path: polygon(52% 12%, 75% 12%, 75% 44%, 70% 46%, 58% 46%, 53% 42%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .foreground[data-aiming] .restingPose {
+    clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0,
+      52% 12%, 75% 12%, 75% 44%, 70% 46%, 58% 46%, 53% 42%, 52% 12%, 0 0);
+  }
+
+  .foreground[data-aiming] .raisedPose { visibility: visible; }
+
+  .remotePulse {
+    position: absolute;
+    inset: 17.3% auto auto 63.5%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #fff2f6;
+    box-shadow: 0 0 8px 3px #f9588f;
+    animation: remote-press 250ms ease-out both;
+  }
+
+  @keyframes remote-press {
+    from { opacity: 1; transform: scale(.65); }
+    to { opacity: 0; transform: scale(1.65); }
+  }
+}
+
 .heading {
   display: flex;
   align-items: baseline;
