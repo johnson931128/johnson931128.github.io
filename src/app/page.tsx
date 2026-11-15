@@ -6,7 +6,7 @@ import CyberpunkIntro from "@/components/portfolio/home/cyberpunk-intro";
 import Navigation from "@/components/portfolio/home/navigation";
 import Section from "@/components/portfolio/home/section";
 import ResourceLinks from "@/components/portfolio/home/resource-links";
-import ProjectList from "@/components/portfolio/home/project-list";
+import ProjectGallery from "@/components/portfolio/home/project-gallery";
 import ExperienceList from "@/components/portfolio/home/experience-list";
 import EngineeringNotes from "@/components/portfolio/home/engineering-notes";
 import styles from "@/components/portfolio/home/portfolio.module.css";
@@ -25,7 +25,7 @@ export default function Page() {
       <Navigation name={DATA.name} nameZh={DATA.nameZh} sections={portfolioSections} cv={portfolioResources.cv} />
       <main id="main-content" className={styles.main} tabIndex={-1}>
         <CyberpunkIntro />
-        <Section id="work" title="Selected Projects" aside={<a href={DATA.contact.social.GitHub.url}>More on GitHub <span aria-hidden="true">↗</span></a>}><ProjectList projects={portfolioProjects} /></Section>
+        <ProjectGallery projects={portfolioProjects} githubUrl={DATA.contact.social.GitHub.url} />
         <Section id="experience" title="Experience"><ExperienceList experiences={portfolioExperiences} /></Section>
         <Section id="learning-notes" title="Engineering Notes" aside={<Link href="/blog" prefetch={false}>All articles <span aria-hidden="true">↗</span></Link>}><EngineeringNotes /></Section>
         <Section id="contact" title="Contact"><div className={styles.contact}><p>For conversations about software, systems, and engineering projects.</p><a className={styles.email} href={`mailto:${DATA.contact.email}`}>{DATA.contact.email}</a><ResourceLinks links={portfolioContactLinks.filter((link) => link.label !== "Email")} label="Social profiles" /></div></Section>
