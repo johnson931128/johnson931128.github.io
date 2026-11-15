@@ -34,7 +34,7 @@
 
 .room::before {
   z-index: -2;
-  background: url("/hero/project-penthouse.webp") center 53% / cover;
+  background: url("/hero/project-penthouse.webp") center / cover;
 }
 
 .room::after {
@@ -42,6 +42,63 @@
   background:
     linear-gradient(180deg, #11182a 0%, transparent 27% 77%, #080d1bc4 100%),
     linear-gradient(90deg, #090e2280, transparent 30% 70%, #090e2280);
+}
+
+.windowMotion {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .windowMotion { display: block; }
+
+  .skyHaze {
+    animation: window-haze 22s ease-in-out -5s infinite alternate;
+  }
+
+  .bridgeTraffic {
+    offset-path: path("M 326 599 C 497 599 566 598 619 587 C 668 573 701 563 768 568 C 855 575 936 580 1004 582 L 1187 594");
+    filter: drop-shadow(0 0 4px #8eeaff);
+    animation: window-traffic 10s linear -2s infinite;
+  }
+
+  .bridgeTraffic + .bridgeTraffic {
+    offset-path: path("M 1186 591 C 1059 582 937 582 769 566 C 704 561 668 571 619 585 C 566 596 498 597 326 597");
+    filter: drop-shadow(0 0 4px #ff70b6);
+    animation-duration: 14s;
+    animation-delay: -8s;
+  }
+
+  .towerBeacon {
+    animation: window-beacon 4.5s ease-in-out -1s infinite;
+  }
+
+  .towerBeacon + .towerBeacon {
+    animation-duration: 6s;
+    animation-delay: -3s;
+  }
+}
+
+@keyframes window-haze {
+  from { transform: translate(-45px, 4px); opacity: .18; }
+  to { transform: translate(205px, -19px); opacity: .68; }
+}
+
+@keyframes window-traffic {
+  0% { offset-distance: 0%; opacity: 0; }
+  9%, 83% { opacity: 1; }
+  93%, 100% { offset-distance: 100%; opacity: 0; }
+}
+
+@keyframes window-beacon {
+  0%, 100% { opacity: .2; }
+  20%, 31% { opacity: .95; }
+  53% { opacity: .2; }
 }
 
 .galleryInner {

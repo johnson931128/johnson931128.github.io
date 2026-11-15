@@ -7,8 +7,9 @@ import styles from "./project-gallery.module.css";
 
 const dragThreshold = 52;
 
-export default function ProjectReel({ projects, heading, children }: {
+export default function ProjectReel({ projects, backdrop, heading, children }: {
   projects: readonly { id: string; title: string }[];
+  backdrop: ReactNode;
   heading: ReactNode;
   children: ReactNode;
 }) {
@@ -91,6 +92,7 @@ export default function ProjectReel({ projects, heading, children }: {
 
   return (
     <div className={styles.room}>
+      {backdrop}
       <div className={styles.galleryInner}>
         {heading}
         <div className={styles.display} data-ready={ready || undefined}>

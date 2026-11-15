@@ -1,6 +1,7 @@
 import type { Project } from "@/data/portfolio";
 import ProjectCard from "./project-card";
 import ProjectReel from "./project-reel";
+import ProjectWindow from "./project-window";
 import styles from "./project-gallery.module.css";
 
 export default function ProjectGallery({ projects, githubUrl }: { projects: readonly Project[]; githubUrl: string }) {
@@ -9,6 +10,7 @@ export default function ProjectGallery({ projects, githubUrl }: { projects: read
       <div className={styles.arrival} aria-hidden="true" />
       <ProjectReel
         projects={projects.map(({ id, title }) => ({ id, title }))}
+        backdrop={<ProjectWindow />}
         heading={
           <header className={styles.heading}>
             <h2 id="work-heading">Selected Projects</h2>
