@@ -93,7 +93,7 @@ export default function ProjectReel({ projects, backdrop, heading, children }: {
   return (
     <div className={styles.room}>
       {backdrop}
-      <div className={styles.galleryInner}>
+      <div className={styles.galleryInner} data-project-stage="">
         {heading}
         <div className={styles.display} data-ready={ready || undefined}>
           <div className={styles.controls}>

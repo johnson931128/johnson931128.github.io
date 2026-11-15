@@ -79,6 +79,7 @@ function paintCurtain(
 
 const curtainDuration = 1050;
 const closedAt = .55;
+const landingTolerance = 16;
 
 export default function CurtainTransition() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -88,12 +89,14 @@ export default function CurtainTransition() {
     const ctx = canvas?.getContext("2d");
     const home = document.getElementById("about");
     const projects = document.getElementById("work");
-    if (!canvas || !ctx || !home || !projects) return;
+    const stage = projects?.querySelector<HTMLElement>("[data-project-stage]");
+    const header = document.querySelector("header");
+    if (!canvas || !ctx || !home || !projects || !stage) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     let lastWheel = -Infinity;
-    let suppressUntil = 0;
+    let transitionDirection = 0;
     let transition: { started: number; destination: HTMLElement; switched: boolean } | null = null;
 
     const sectionTop = (section: HTMLElement) => {
@@ -101,8 +104,21 @@ export default function CurtainTransition() {
       return Math.max(0, section.getBoundingClientRect().top + window.scrollY - margin);
     };
 
+    const projectLanding = () => {
+      const bounds = stage.getBoundingClientRect();
+      const style = getComputedStyle(stage);
+      const topPadding = parseFloat(style.paddingTop) || 0;
+      const bottomPadding = parseFloat(style.paddingBottom) || 0;
+      const contentHeight = bounds.height - topPadding - bottomPadding;
+      const headerBottom = header?.getBoundingClientRect().height ?? 0;
+      const freeSpace = window.innerHeight - headerBottom - contentHeight;
+      const contentTop = headerBottom + Math.max(16, freeSpace / 2);
+      return Math.max(0, bounds.top + window.scrollY + topPadding - contentTop);
+    };
+
     const jumpTo = (section: HTMLElement) => {
-      window.scrollTo({ top: sectionTop(section), behavior: "instant" });
+      const top = section === projects ? projectLanding() : sectionTop(section);
+      window.scrollTo({ top, behavior: "instant" });
       section.focus({ preventScroll: true });
     };
 
@@ -123,8 +139,8 @@ export default function CurtainTransition() {
 
       const progress = clamp((time - transition.started) / curtainDuration);
       if (transition.switched && progress === 1) {
+        jumpTo(transition.destination);
         finish();
-        suppressUntil = time + 280;
         return;
       }
 
@@ -153,23 +169,29 @@ export default function CurtainTransition() {
     };
 
     const onWheel = (event: WheelEvent) => {
-      if (event.defaultPrevented || !event.cancelable || event.ctrlKey || event.metaKey || event.shiftKey ||
+      if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey ||
           Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
 
+      const direction = Math.sign(event.deltaY);
       const now = performance.now();
       const continuingGesture = now - lastWheel < 160;
       lastWheel = now;
-      if (transition || (now < suppressUntil && continuingGesture)) {
+      // Keep the original gesture's momentum from shifting the landing. A new
+      // gesture or a change of direction can navigate immediately.
+      if (transition || (continuingGesture && direction === transitionDirection)) {
         event.preventDefault();
         return;
       }
 
+      transitionDirection = 0;
       const current = window.scrollY;
-      const projectTop = sectionTop(projects);
+      const landing = projectLanding();
+      const projectStart = Math.min(sectionTop(projects), landing);
       const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1);
-      const fromHome = delta > 0 && current < projectTop - 12;
-      const fromProjects = delta < 0 && current >= projectTop - 12 && current + delta <= projectTop + 12;
-      if (!fromHome && !fromProjects) return;
+      const fromHome = delta > 0 && current < projectStart - landingTolerance;
+      const fromProjects = delta < 0 && current >= projectStart - landingTolerance &&
+        current + delta <= landing + landingTolerance;
+      if (!event.cancelable || (!fromHome && !fromProjects)) return;
       if (event.target instanceof Element && event.target.closest("textarea, select, [contenteditable], video")) return;
 
       event.preventDefault();
@@ -179,6 +201,7 @@ export default function CurtainTransition() {
         return;
       }
 
+      transitionDirection = direction;
       transition = { started: now, destination, switched: false };
       frame = requestAnimationFrame(render);
     };
