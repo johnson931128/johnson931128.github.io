@@ -11,7 +11,7 @@ export default function CyberpunkIntro() {
   const { cv, portrait } = portfolioResources;
 
   return (
-    <section id="about" className={styles.hero} aria-labelledby="about-heading">
+    <section id="about" tabIndex={-1} className={styles.hero} aria-labelledby="about-heading">
       <CyberpunkCity />
       <div className={styles.inner}>
         <div className={styles.biography}>

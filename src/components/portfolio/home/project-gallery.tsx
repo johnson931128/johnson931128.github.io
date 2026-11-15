@@ -6,7 +6,7 @@ import styles from "./project-gallery.module.css";
 
 export default function ProjectGallery({ projects, githubUrl }: { projects: readonly Project[]; githubUrl: string }) {
   return (
-    <section id="work" className={styles.gallery} aria-labelledby="work-heading">
+    <section id="work" tabIndex={-1} className={styles.gallery} aria-labelledby="work-heading">
       <div className={styles.arrival} aria-hidden="true" />
       <ProjectReel
         projects={projects.map(({ id, title }) => ({ id, title }))}

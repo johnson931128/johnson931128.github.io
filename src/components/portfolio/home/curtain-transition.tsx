@@ -77,90 +77,120 @@ function paintCurtain(
   ctx.restore();
 }
 
+const curtainDuration = 1050;
+const closedAt = .55;
+
 export default function CurtainTransition() {
-  const markerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const marker = markerRef.current;
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
-    if (!marker || !canvas || !ctx) return;
+    const home = document.getElementById("about");
+    const projects = document.getElementById("work");
+    if (!canvas || !ctx || !home || !projects) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
-    let previousTime = 0;
-    let displayed: number | undefined;
+    let lastWheel = -Infinity;
+    let suppressUntil = 0;
+    let transition: { started: number; destination: HTMLElement; switched: boolean } | null = null;
 
-    function render(time: number) {
+    const sectionTop = (section: HTMLElement) => {
+      const margin = parseFloat(getComputedStyle(section).scrollMarginTop) || 0;
+      return Math.max(0, section.getBoundingClientRect().top + window.scrollY - margin);
+    };
+
+    const jumpTo = (section: HTMLElement) => {
+      window.scrollTo({ top: sectionTop(section), behavior: "instant" });
+      section.focus({ preventScroll: true });
+    };
+
+    const finish = () => {
+      cancelAnimationFrame(frame);
       frame = 0;
-      if (!marker || !canvas || !ctx) return;
+      transition = null;
+      canvas.hidden = true;
+    };
+
+    const render = (time: number) => {
+      if (!transition) return;
       if (reducedMotion.matches) {
-        canvas.hidden = true;
-        displayed = undefined;
+        if (!transition.switched) jumpTo(transition.destination);
+        finish();
+        return;
+      }
+
+      const progress = clamp((time - transition.started) / curtainDuration);
+      if (transition.switched && progress === 1) {
+        finish();
+        suppressUntil = time + 280;
         return;
       }
 
       const height = window.innerHeight;
       const width = document.documentElement.clientWidth;
-      const boundary = marker.getBoundingClientRect().top;
-      const end = Math.min(height * .32, width <= 760 ? 130 : 110);
-      const start = Math.max(end + 1, Math.min(height * .82, boundary + window.scrollY - 48));
-      const target = clamp((start - boundary) / (start - end));
-
-      if (target === 0 || target === 1) {
-        // Keep navigation jumps and section links clear of a stale overlay.
-        displayed = target;
-        canvas.hidden = true;
-        return;
-      }
-
-      displayed ??= target;
-      const elapsed = previousTime ? Math.min(time - previousTime, 80) : 16;
-      previousTime = time;
-      const difference = target - displayed;
-      displayed = Math.abs(difference) < .0015
-        ? target
-        : displayed + difference * (1 - Math.exp(-elapsed / 64));
-
       const scale = Math.min(window.devicePixelRatio || 1, 1.5);
       if (canvas.width !== Math.round(width * scale) || canvas.height !== Math.round(height * scale)) {
         canvas.width = Math.round(width * scale);
         canvas.height = Math.round(height * scale);
       }
 
+      // If a frame was delayed, still cover the old scene completely before the jump.
+      const visibleProgress = transition.switched ? progress : Math.min(progress, closedAt);
       canvas.hidden = false;
       ctx.setTransform(scale, 0, 0, scale, 0, 0);
       ctx.clearRect(0, 0, width, height);
-      paintCurtain(ctx, width, height, displayed, -1);
-      paintCurtain(ctx, width, height, displayed, 1);
+      paintCurtain(ctx, width, height, visibleProgress, -1);
+      paintCurtain(ctx, width, height, visibleProgress, 1);
 
-      if (displayed !== target) schedule();
-    }
+      if (!transition.switched && progress >= closedAt) {
+        jumpTo(transition.destination);
+        transition.switched = true;
+        transition.started = time - closedAt * curtainDuration;
+      }
+      frame = requestAnimationFrame(render);
+    };
 
-    function schedule() {
-      if (!frame) frame = requestAnimationFrame(render);
-    }
+    const onWheel = (event: WheelEvent) => {
+      if (event.defaultPrevented || !event.cancelable || event.ctrlKey || event.metaKey || event.shiftKey ||
+          Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
 
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    reducedMotion.addEventListener("change", schedule);
-    const layout = new ResizeObserver(schedule);
-    if (marker.previousElementSibling) layout.observe(marker.previousElementSibling);
-    schedule();
+      const now = performance.now();
+      const continuingGesture = now - lastWheel < 160;
+      lastWheel = now;
+      if (transition || (now < suppressUntil && continuingGesture)) {
+        event.preventDefault();
+        return;
+      }
 
+      const current = window.scrollY;
+      const projectTop = sectionTop(projects);
+      const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1);
+      const fromHome = delta > 0 && current < projectTop - 12;
+      const fromProjects = delta < 0 && current >= projectTop - 12 && current + delta <= projectTop + 12;
+      if (!fromHome && !fromProjects) return;
+      if (event.target instanceof Element && event.target.closest("textarea, select, [contenteditable], video")) return;
+
+      event.preventDefault();
+      const destination = fromHome ? projects : home;
+      if (reducedMotion.matches) {
+        jumpTo(destination);
+        return;
+      }
+
+      transition = { started: now, destination, switched: false };
+      frame = requestAnimationFrame(render);
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("hashchange", finish);
     return () => {
-      cancelAnimationFrame(frame);
-      layout.disconnect();
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      reducedMotion.removeEventListener("change", schedule);
+      finish();
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("hashchange", finish);
     };
   }, []);
 
-  return (
-    <div ref={markerRef} aria-hidden="true">
-      <canvas ref={canvasRef} hidden className={styles.curtain} />
-    </div>
-  );
+  return <canvas ref={canvasRef} hidden aria-hidden="true" className={styles.curtain} />;
 }
