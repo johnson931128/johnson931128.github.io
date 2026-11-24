@@ -79,6 +79,16 @@ export const portfolioExperiences: readonly Experience[] = [
     logo: work.logoUrl,
     links: work.links.map((link) => ({ label: link.type, href: link.href })),
   })),
+  {
+    id: "ncku-graduate-education",
+    organization: "National Cheng Kung University",
+    role: "Master’s Program in Engineering Science",
+    description: "Computer Science and Applications Track (資訊工程與應用組)",
+    location: "Tainan, Taiwan",
+    period: { start: "Admitted" },
+    logo: "/brands/ncku.jpg",
+    links: [],
+  },
 ];
 
 export const portfolioContactLinks: readonly PortfolioLink[] = [
