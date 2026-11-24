@@ -40,7 +40,7 @@
 .sectionHeading h2 { font-size: 30px; font-weight: 730; line-height: 1.3; letter-spacing: -.8px; }
 .sectionHeading h2::after { content: ""; display: inline-block; width: 42px; height: 3px; background: var(--home-accent); margin-left: 16px; vertical-align: middle; }
 .sectionHeading > a { color: var(--home-link); font-size: 13px; white-space: nowrap; }
-.projectList, .experienceList {
+.projectList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
@@ -119,11 +119,43 @@
 .links { display: flex; flex-wrap: wrap; list-style: none; padding: 0; gap: 5px 0; margin: 10px 0 0; color: var(--home-link); font-size: 14px; font-weight: 600; }
 .links li { display: flex; align-items: center; }
 .links li + li::before { content: "/"; color: #7a858a; font-weight: 400; margin: 0 13px; }
+.experienceList {
+  --timeline-indent: 32px;
+  display: grid;
+  gap: 18px;
+  list-style: none;
+  padding: 0 0 12px var(--timeline-indent);
+  border-inline-start: 1px solid var(--home-rule);
+}
+
+.experienceItem { position: relative; }
+
+.experienceItem::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(-1 * var(--timeline-indent));
+  top: 29px;
+  width: var(--timeline-indent);
+  height: 1px;
+  background: var(--home-rule);
+}
+
+.experienceItem::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(-1 * var(--timeline-indent) - 5px);
+  top: 25px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--home-accent);
+}
+
 .experienceRow { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-content: start; gap: 16px; padding: 22px; }
 .organizationLogo { display: flex; align-items: flex-start; justify-content: center; padding-top: 6px; }
 .organizationLogo img { max-width: 64px; max-height: 56px; object-fit: contain; }
 
-.period { color: var(--home-muted); font-size: 13px; white-space: nowrap; }
+.period { color: var(--home-muted); font-size: 13px; }
 .role { margin: 6px 0; font-size: 15px; }
 .experienceCopy > p:not(.role) { font-size: 15px; }
 .sectionIntro { color: var(--home-muted); margin: 0 0 22px; }
@@ -173,10 +205,11 @@
   .sectionHeading h2 { font-size: 24px; }
   .sectionHeading > a { font-size: 11px; padding-top: 5px; }
   .sectionHeading h2::after { width: 22px; }
-  .projectList, .experienceList { grid-template-columns: minmax(0, 1fr); }
+  .projectList { grid-template-columns: minmax(0, 1fr); }
   .projectCopy { padding-inline: 5px; }
   .projectCover strong { font-size: 32px; }
   .projectCover { padding: 26px; }
+  .experienceList { --timeline-indent: 18px; }
   .experienceRow { grid-template-columns: 48px minmax(0, 1fr); gap: 12px; padding: 15px; }
   .organizationLogo img { max-width: 48px; max-height: 48px; }
   .noteRow { gap: 16px; }

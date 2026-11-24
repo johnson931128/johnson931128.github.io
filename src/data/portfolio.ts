@@ -59,6 +59,16 @@ export const portfolioProjects: readonly Project[] = projectOrder.map((title) =>
 });
 
 export const portfolioExperiences: readonly Experience[] = [
+  {
+    id: "ncku-education",
+    organization: "National Cheng Kung University",
+    role: "B.Eng. in Engineering Science",
+    description: "Undergraduate studies in the Department of Engineering Science.",
+    location: "Tainan, Taiwan",
+    period: { start: "Sep 2023", end: "Jun 2027 (expected)" },
+    logo: "/brands/ncku.jpg",
+    links: [],
+  },
   ...DATA.work.map((work) => ({
     id: work.company.toLowerCase().replaceAll(" ", "-"),
     organization: work.company,
@@ -69,14 +79,6 @@ export const portfolioExperiences: readonly Experience[] = [
     logo: work.logoUrl,
     links: work.links.map((link) => ({ label: link.type, href: link.href })),
   })),
-  {
-    id: "ncku-ctrlkine-amr",
-    organization: "National Cheng Kung University",
-    role: "CtrlKine-AMR Project",
-    description: DATA.projects.find((project) => project.title === "CtrlKine-AMR")!.description,
-    logo: "/brands/ncku.jpg",
-    links: [{ label: "Project", href: "#project-ctrlkine-amr" }],
-  },
 ];
 
 export const portfolioContactLinks: readonly PortfolioLink[] = [
