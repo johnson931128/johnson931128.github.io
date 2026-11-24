@@ -18,8 +18,7 @@
 .portfolio :is(section, article) { scroll-margin-top: 100px; }
 .skipLink { position: fixed; top: -100px; left: 20px; z-index: 60; padding: 10px 20px; background: white; }
 .skipLink:focus { top: 12px; }
-.header { position: sticky; top: 0; z-index: 40; background: #090e1c; color: #eef5ff; border-bottom: 1px solid #28404d; }
-.header { --home-muted: #b5c4d4; --home-ink: #eef5ff; --home-accent: #7ef6ff; }
+.header { position: sticky; top: 0; z-index: 40; background: #fdfdfbf5; border-bottom: 1px solid #edf0f0; box-shadow: 0 5px 18px #203d4905; }
 .headerInner { max-width: 1160px; margin: auto; padding: 15px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .wordmark { white-space: nowrap; font-size: 15px; font-weight: 750; }
 .wordmark span { margin-left: 6px; font-size: 12px; font-weight: 500; color: var(--home-muted); }
@@ -27,6 +26,15 @@
 .header nav a { display: block; padding: 4px 0; border-bottom: 2px solid transparent; font-size: 14px; font-weight: 550; color: var(--home-muted); }
 .header nav a[aria-current] { border-bottom-color: var(--home-accent); color: var(--home-ink); }
 .main { max-width: 1160px; padding: 0 24px; margin: auto; }
+.about { display: flex; align-items: center; gap: 64px; padding: 60px 0 18px; }
+.biography { flex: 1; max-width: 850px; }
+.about h1 { font-size: clamp(36px, 4.2vw, 54px); letter-spacing: -1.8px; font-weight: 750; line-height: 1.2; margin-bottom: 20px; }
+.about h1 span { color: var(--home-muted); font-size: .56em; letter-spacing: 0; margin-left: 10px; white-space: nowrap; font-weight: 600; }
+.affiliation { color: var(--home-accent); font-weight: 650; margin-bottom: 12px; }
+.tagline { color: var(--home-muted); font-style: italic; margin-bottom: 23px; }
+.biography > p:not(.affiliation, .tagline) { margin-bottom: 14px; }
+.biography .links { margin-top: 23px; }
+.portrait { width: 250px; height: 310px; object-fit: cover; border-radius: 10px; border: 1px solid var(--home-rule); }
 .section { margin-top: 88px; }
 .sectionHeading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding-bottom: 16px; margin-bottom: 24px; border-bottom: 2px solid var(--home-rule); }
 .sectionHeading h2 { font-size: 30px; font-weight: 730; line-height: 1.3; letter-spacing: -.8px; }
@@ -82,6 +90,9 @@
   .wordmark { display: inline-block; margin-bottom: 5px; }
   .header nav ul { gap: 22px; flex-wrap: wrap; }
   .header nav a { font-size: 12px; padding: 6px 0; }
+  .about { padding-top: 36px; gap: 24px; }
+  .about h1 { letter-spacing: -1px; }
+  .portrait { width: 150px; height: 190px; }
   .section { margin-top: 60px; }
   .sectionHeading h2 { font-size: 26px; }
   .sectionHeading h2::after { width: 28px; margin-left: 10px; }
@@ -93,8 +104,12 @@
 }
 @media (max-width: 640px) {
   .headerInner, .main { padding-left: 22px; padding-right: 22px; }
-  .header nav ul { gap: 3px clamp(8px, 2.8vw, 16px); }
-  .header nav a { font-size: clamp(11px, 3.1vw, 12px); }
+  .header nav ul { gap: 18px; }
+  .about { display: block; }
+  .about h1 span { display: block; margin: 10px 0 0; font-size: 23px; }
+  .affiliation { font-size: 14px; line-height: 1.7; }
+  .biography > p { font-size: 15px; }
+  .portrait { margin-top: 24px; }
   .sectionHeading { align-items: flex-start; gap: 12px; }
   .sectionHeading h2 { font-size: 24px; }
   .sectionHeading > a { font-size: 11px; padding-top: 5px; }
