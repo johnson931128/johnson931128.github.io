@@ -40,9 +40,70 @@
 .sectionHeading h2 { font-size: 30px; font-weight: 730; line-height: 1.3; letter-spacing: -.8px; }
 .sectionHeading h2::after { content: ""; display: inline-block; width: 42px; height: 3px; background: var(--home-accent); margin-left: 16px; vertical-align: middle; }
 .sectionHeading > a { color: var(--home-link); font-size: 13px; white-space: nowrap; }
-.projectRow { display: grid; grid-template-columns: minmax(0, 34%) minmax(0, 1fr); gap: 40px; padding: 26px 0 32px; border-bottom: 1px solid var(--home-rule); }
-.projectRow:first-child { padding-top: 4px; }
-.preview { display: block; align-self: start; overflow: hidden; border: 1px solid var(--home-rule); border-radius: 5px; background: #f1f4f2; }
+.projectList, .experienceList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.projectRow, .experienceRow {
+  min-width: 0;
+  border: 1px solid var(--home-rule);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 3px 12px #203d4909;
+}
+
+.projectRow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px;
+}
+
+.projectCopy { padding: 0 10px 10px; }
+.projectCopy h3, .experienceCopy h3 { transition: color 160ms ease; }
+
+:is(.projectRow, .experienceRow):focus-within {
+  border-color: #ba7a5d;
+  box-shadow: 0 0 0 3px #b84d2318, 0 8px 24px #203d4914;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :is(.projectRow, .experienceRow):hover {
+    border-color: #ba7a5d;
+    box-shadow: 0 14px 32px #203d4920;
+  }
+
+  :is(.projectRow, .experienceRow):hover h3 { color: var(--home-accent); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(.projectRow, .experienceRow) {
+    transition: transform 200ms ease, border-color 180ms ease, box-shadow 200ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :is(.projectRow, .experienceRow):hover { transform: translateY(-4px); }
+    .projectRow:hover .projectImage { transform: scale(1.035); }
+    .projectImage { transition: transform 260ms ease; }
+  }
+
+  @supports (animation-timeline: view()) {
+    :is(.projectRow, .experienceRow) > :last-child {
+      animation: card-entry linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+
+    @keyframes card-entry {
+      from { opacity: .72; translate: 0 7px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+  }
+}
+
+.preview { display: block; overflow: hidden; border: 1px solid var(--home-rule); border-radius: 10px; background: #f1f4f2; }
 .projectImage { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
 .videoButton { position: relative; display: block; width: 100%; cursor: pointer; text-align: left; }
 .videoButton:focus-visible { outline: 3px solid var(--home-accent); outline-offset: -4px; }
@@ -58,10 +119,10 @@
 .links { display: flex; flex-wrap: wrap; list-style: none; padding: 0; gap: 5px 0; margin: 10px 0 0; color: var(--home-link); font-size: 14px; font-weight: 600; }
 .links li { display: flex; align-items: center; }
 .links li + li::before { content: "/"; color: #7a858a; font-weight: 400; margin: 0 13px; }
-.experienceRow { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 28px; padding: 25px 0; border-bottom: 1px solid var(--home-rule); }
+.experienceRow { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-content: start; gap: 16px; padding: 22px; }
 .organizationLogo { display: flex; align-items: flex-start; justify-content: center; padding-top: 6px; }
-.organizationLogo img { max-width: 88px; max-height: 66px; object-fit: contain; }
-.experienceTitle { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
+.organizationLogo img { max-width: 64px; max-height: 56px; object-fit: contain; }
+
 .period { color: var(--home-muted); font-size: 13px; white-space: nowrap; }
 .role { margin: 6px 0; font-size: 15px; }
 .experienceCopy > p:not(.role) { font-size: 15px; }
@@ -96,9 +157,7 @@
   .section { margin-top: 60px; }
   .sectionHeading h2 { font-size: 26px; }
   .sectionHeading h2::after { width: 28px; margin-left: 10px; }
-  .projectRow { gap: 24px; }
   .projectCover { padding: 16px; }
-  .experienceTitle { display: block; }
   .period { margin-top: 5px; }
   .portfolio :is(section, article) { scroll-margin-top: 120px; }
 }
@@ -114,10 +173,11 @@
   .sectionHeading h2 { font-size: 24px; }
   .sectionHeading > a { font-size: 11px; padding-top: 5px; }
   .sectionHeading h2::after { width: 22px; }
-  .projectRow { grid-template-columns: 1fr; gap: 20px; padding-bottom: 28px; }
+  .projectList, .experienceList { grid-template-columns: minmax(0, 1fr); }
+  .projectCopy { padding-inline: 5px; }
   .projectCover strong { font-size: 32px; }
   .projectCover { padding: 26px; }
-  .experienceRow { grid-template-columns: 48px minmax(0, 1fr); gap: 18px; }
+  .experienceRow { grid-template-columns: 48px minmax(0, 1fr); gap: 12px; padding: 15px; }
   .organizationLogo img { max-width: 48px; max-height: 48px; }
   .noteRow { gap: 16px; }
   .noteRow > span { font-size: 11px; }

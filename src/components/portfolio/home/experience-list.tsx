@@ -7,7 +7,7 @@ export default function ExperienceList({ experiences }: { experiences: readonly 
   return <div className={styles.experienceList}>{experiences.map((experience) => <article key={experience.id} className={styles.experienceRow}>
     <div className={styles.organizationLogo}>{experience.logo ? <Image src={experience.logo} alt={`${experience.organization} logo`} width={112} height={72} /> : null}</div>
     <div className={styles.experienceCopy}>
-      <div className={styles.experienceTitle}>
+      <div>
         <h3>{experience.organization}</h3>
         {experience.period ? <p className={styles.period}>{experience.period.start}{experience.period.end ? ` – ${experience.period.end}` : ""}</p> : null}
       </div>

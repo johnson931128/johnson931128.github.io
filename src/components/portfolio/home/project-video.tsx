@@ -47,7 +47,7 @@ export default function ProjectVideo({ title, src, poster }: {
 
   return (
     <button type="button" className={styles.videoButton} onClick={() => setPlaying(true)} aria-label={`Play ${title} video`}>
-      <Image src={poster.src} alt={poster.alt} width={720} height={450} sizes="(max-width: 640px) 100vw, 360px" className={styles.projectImage} />
+      <Image src={poster.src} alt={poster.alt} width={720} height={450} sizes="(max-width: 640px) 100vw, (max-width: 1160px) 48vw, 530px" className={styles.projectImage} />
       <span className={styles.playLabel}><span aria-hidden="true">▶</span> Watch video</span>
     </button>
   );

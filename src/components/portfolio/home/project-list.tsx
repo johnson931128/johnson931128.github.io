@@ -5,7 +5,7 @@ import ProjectVideo from "./project-video";
 import styles from "./portfolio.module.css";
 
 function ProjectPreview({ project }: { project: Project }) {
-  if (project.image) return <Image src={project.image.src} alt={project.image.alt} width={720} height={450} sizes="(max-width: 640px) 100vw, 360px" className={styles.projectImage} />;
+  if (project.image) return <Image src={project.image.src} alt={project.image.alt} width={720} height={450} sizes="(max-width: 640px) 100vw, (max-width: 1160px) 48vw, 530px" className={styles.projectImage} />;
   // Identify projects without inventing a screenshot or downloading a video.
   return <div className={styles.projectCover} aria-hidden="true"><span>{project.technologies.slice(0, 2).join(" / ")}</span><strong>{project.title}</strong><span>{project.subtitle}</span></div>;
 }
